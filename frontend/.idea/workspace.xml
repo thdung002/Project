@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1e34a21-8260-445d-a78d-91904658909a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bookingsystem/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/router/index.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bookingsystem" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/bookingsystem/package.json" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1Yhrkr2i5KtZgzk2pfUTr1uf4C6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\REVER\Project\frontend\bookingsystem\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/bookingsystem/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1e34a21-8260-445d-a78d-91904658909a" name="Default Changelist" comment="" />
+      <created>1583405812842</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583405812842</updated>
+      <workItem from="1583405817639" duration="188000" />
+      <workItem from="1583406161599" duration="3000" />
+      <workItem from="1583478651789" duration="8069000" />
+      <workItem from="1583719836039" duration="13597000" />
+      <workItem from="1583737881260" duration="12915000" />
+      <workItem from="1583805183433" duration="4027000" />
+      <workItem from="1583810922619" duration="20495000" />
+      <workItem from="1583891620579" duration="22398000" />
+      <workItem from="1583979905305" duration="14536000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

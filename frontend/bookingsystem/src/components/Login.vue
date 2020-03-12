@@ -1,0 +1,64 @@
+<template>
+    <div class="row" id="form-login">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="" method="post" @submit.prevent="login">
+                <div class="panel panel-primary col-md-7">
+                    <div class="panel-heading">Login</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label> Username </label>
+                            <input type="text" v-model="formdata.username"/>
+                        </div>
+                        <div class="form-group">
+                            <label> Password </label>
+                            <input type="password" v-model="formdata.password"/>
+                        </div>
+                        <button class="form-group btn btn-success">Login
+                        </button>
+                        <button class="btn btn-danger" @click="Goback"> Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</template>
+
+<script>
+    import axios from 'axios'
+
+    export default {
+        name: "Login",
+        data(){
+            return {
+                formdata:{
+                    username:'',
+                    password:'',
+                },
+            }
+        },
+        methods:{
+            login(){
+                axios.post("http://localhost:8000/login?username="+ this.formdata.username+"&password="+this.formdata.password).then((response)=>{
+                    console.log(response.data);
+                    if(response.data.id_sale>0){
+                        alert("Log in successful");
+                        this.$store.commit('updateID',response.data.id_sale);
+                        this.$router.push('/scheduler');
+                    }
+                    else {
+                        this.$router.push('/login');
+                        alert("Log in failed.");
+                    }
+                })
+            },
+            Goback(){
+                this.$router.push('/');
+            },
+
+        }
+    }
+</script>
+
