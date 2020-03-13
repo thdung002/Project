@@ -1,20 +1,20 @@
 <template>
-        <div id="booking" class="section">
-            <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
-                <div style='float: right' class = "form-header">
-                    <button class="btn btn-warning" @click="login">
-                        Login
-                    </button>
-                </div>
-                <div style='float: left' class = "form-header">
-                    <button class="btn btn-default" @click="home">
-                        Home
-                    </button>
-                </div>
+    <div id="booking" class="section">
+        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
+            <div style='float: right' class = "form-header">
+                <button class="btn btn-warning" @click="login">
+                    Login
+                </button>
+            </div>
+            <div style='float: left' class = "form-header">
+                <button class="btn btn-default" @click="home">
+                    Home
+                </button>
+            </div>
 
-            </nav>
+        </nav>
 
-            <div class="section-center">
+        <div class="section-center">
             <div class="container">
                 <div class="row">
                     <div class="booking-form">
@@ -22,61 +22,45 @@
                             <h1>Please fill your information</h1>
                         </div>
                         <form action="" method="post" @submit.prevent="addUser" novalidate="true">
-                            <div class="row">
-                            <div v-if="errors.length" class="form-label">
-                                <b>Please correct the following error(s):</b>
-                            <ul>
-                                <li v-for="(error,index) in errors" :key="index">{{ error }}</li>
-                            </ul>
+                            <div class="form-group">
+                                <div v-if="errors.length" class="form-label">
+                                    <b>Please correct the following error(s):</b>
+                                    <ul>
+                                        <li v-for="(error,index) in errors" :key="index">{{ error }}</li>
+                                    </ul>
+                                </div>
                             </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Name</span>
                                         <input class="form-control" v-model="dataform.name" type="text" placeholder="Enter your name">
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Email</span>
                                         <input class="form-control" v-model="dataform.email" type="email" placeholder="Enter your email">
                                     </div>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <span class="form-label">Phone</span>
                                 <input class="form-control" v-model="dataform.phone" type="tel" placeholder="Enter your phone number">
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8">
                                     <div class="form-group">
                                         <span class="form-label">Choose date</span>
                                         <select v-model="dataform.dateUserChoose" class="form-control" >
                                             <option
-                                                    v-for="(dates, index) in unionAll"
+                                                    v-for="(dates, index) in saledata"
                                                     v-show="planelast === dates.id_plane"
-                                                    :item="dates"
-                                                    :key="index">{{datestamp(dates.date)}}</option>
+                                                    :value="dates.date"
+                                                    :key="index">{{datestamp(dates.date)}}- Start from {{timestamp(dates.starts)}} to  {{timestamp(dates.ends)}}</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <span class="form-label">Time</span>
-                                <select v-model="dataform.timeUserChoose" class="form-control"
-                                        v-for="(time, index) in saledata"
-                                        v-show="dataform.dateUserChoose === datestamp(time.date)"
-                                        :key="index"
-                                        >
-                                    <option
-
-                                            v-for="(n,ind) in getNumbers(parseInt(time.starts),parseInt(time.ends))"
-                                            :value="timestamp(n)"
-                                            :key="ind">{{timestamp(n)}}</option>
-                                </select>
-                                <span class="select-arrow"></span>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <span class="form-label">Time</span>
+                                        <vue-timepicker format="HH:mm" v-model="timeval"></vue-timepicker>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-btn">
@@ -94,8 +78,8 @@
 
 <script>
     import axios from 'axios';
-    import _ from 'lodash';
     import moment from 'moment';
+    import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue'
 
     export default {
         name: "User",
@@ -106,7 +90,8 @@
                 message:"",
                 success:0,
                 errors:[],
-                planelast : this.$store.state.planes
+                planelast : this.$store.state.planes,
+                timeval:""
             }
         },
         methods:{
@@ -126,13 +111,24 @@
                 return re.test(email);
             },
             timestamp(hours){
-                return moment.utc(hours*3600*1000).format('HH:mm')
+                return moment.utc(hours*3600*1000).format("HH:mm");
             },
             datestamp(date){
                 return moment(date).format("DD/MM/YYYY");
             },
-
+            checkingTime(){
+                let checking=0;
+                for(let i=0;i<this.saledata.length;i++)
+                {
+                    if(this.saledata[i].date === this.dataform.dateUserChoose )
+                        if(this.timeval <= this.timestamp(this.saledata[i].ends) && this.timeval >= this.timestamp(this.saledata[i].starts))
+                            {checking=1;
+                                break;}
+                }
+                return checking;
+            },
             addUser(){
+                this.message="";
                 this.errors = [];
                 if(!this.dataform.name) this.errors.push("Name required.");
                 if(!this.dataform.email) {
@@ -140,31 +136,27 @@
                 } else if(!this.validEmail(this.dataform.email)) {
                     this.errors.push("Valid email required.");
                 }
+                if(!this.dataform.phone) this.errors.push("Phone required");
+                if(!this.dataform.dateUserChoose) this.errors.push("Date required");
+                if(!this.timeval) this.errors.push("Time required");
+                console.log(this.checkingTime());
+                if(this.checkingTime()===0)
+                {
+                    this.errors.push("Time is not in range!")
+                }
                 if(!this.errors.length) {
-                axios.post("http://localhost:8000/booking/add?fn="+this.dataform.name+"&email="+this.dataform.email+"&phone="+this.dataform.phone+"&date="+this.dataform.dateUserChoose+"&idplane="+this.$store.state.planes+"&time="+this.dataform.timeUserChoose).then((respone)=>{
-                    console.log(respone);
-                    if(respone.data.result>0){
-                        this.message="You added success!";
-                        this.success=respone.data.result;
-                    }
-                    else{
-                        this.message="Added failed";
-                        this.success=respone.data.result;
-                    }
-                })}
+                    axios.post("http://localhost:8000/booking/add?fn="+this.dataform.name+"&email="+this.dataform.email+"&phone="+this.dataform.phone+"&date="+this.dataform.dateUserChoose+"&idplane="+this.$store.state.planes+"&time="+this.timeval).then((respone)=>{
+                        console.log(respone);
+                        if(respone.data.result>0){
+                            this.message="You added success!";
+                            this.success=respone.data.result;
+                        }
+                        else{
+                            this.message="Added failed";
+                            this.success=respone.data.result;
+                        }
+                    })}
             }
-        },
-        computed:{
-            uniqPlane:function(){
-                return _.uniqBy(this.saledata,'plane')
-            },
-            uniqDate:function(){
-                return _.uniqBy(this.saledata,'date')
-            },
-            unionAll:function(){
-                return _.unionWith(this.uniqPlane,this.uniqDate,_.isEqual);
-            }
-
         },
         mounted() {
             axios.get("http://localhost:8000/sale").then((respone)=>{
@@ -174,10 +166,12 @@
             })
 
         },
+        components:{VueTimepicker }
     }
 </script>
 
 <style scoped>
     @import '../assets/css/style.css';
     @import '../assets/css/bootstrap.min.css';
+
 </style>

@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e34a21-8260-445d-a78d-91904658909a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +29,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bookingsystem" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/bookingsystem/package.json" />
@@ -53,6 +51,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -106,7 +105,8 @@
       <workItem from="1583805183433" duration="4027000" />
       <workItem from="1583810922619" duration="20495000" />
       <workItem from="1583891620579" duration="22398000" />
-      <workItem from="1583979905305" duration="14536000" />
+      <workItem from="1583979905305" duration="22515000" />
+      <workItem from="1584064770399" duration="19071000" />
     </task>
     <servers />
   </component>
@@ -125,5 +125,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/bookingsystem" />
+    </ignored-roots>
   </component>
 </project>

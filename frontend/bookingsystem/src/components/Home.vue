@@ -34,7 +34,7 @@
                                         <article class="article widget-article" >
 
                                             <div class="article-body">
-                                                <h4 class="article-title" @click="planeclick(planes.id_plane)"><a>{{planes.plane}}</a></h4>
+                                                <h4 class="article-title" @click="planeclick(planes.id_plane)"><a href="#">{{planes.plane}}</a></h4>
                                                 <ul class="article-meta">
                                                     <li v-for="(item,ind) in unionAll"
                                                     :key="ind"
@@ -95,7 +95,7 @@
                 return _.uniqBy(this.planedata,'date')
             },
             unionAll:function(){
-                return _.unionWith(this.uniqPlane,this.uniqDate,_.isEqual);
+                return _.unionWith(this.planedata,this.uniqDate,_.isEqual);
             }
 
         },

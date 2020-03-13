@@ -95,11 +95,10 @@
         data(){
             return{
                 title:'Add new worktime',
-                dataform:{}, // store to add new worktime of sale plane,date
+                dataform:{}, //Store to add new worktime of sale plane,date
                 saledata:{},//Data get from sale database id, date, plane, starts, ends
                 userdata:{},//Data get from booking in database_Note of user
                 planedata:{},//data from master database plane
-                success:0,
                 message:"",
                 value:[0,24],
             }
@@ -115,20 +114,23 @@
             datestamp(date){
                 return moment(date).format("DD/MM/YYYY");
             },
-            add(){
+            checking(){
                 let checking=0;
-                for(let i=0;i<this.saledata.length;i++)
-                {
-                    if(this.value[0] === this.saledata[i].starts && this.value[1]===this.saledata[i].ends && //If time is duplicate and different plane with the same date => Fail
-                        this.saledata[i].plane !== this.dataform.plane && this.saledata[i].date === this.dataform.date )
-                    {
-                        checking=1;
-                        break;
+                for(let i=0;i<this.saledata.length;i++) {
+                    if (this.saledata[i].date === this.dataform.date && (this.saledata[i].plane === this.dataform.plane.text || this.saledata[i].plane !== this.dataform.plane.text)) {
+                        if ((this.value[0] >= this.saledata[i].starts && this.value[1] <= this.saledata[i].ends)
+                            || (this.value[0] <= this.saledata[i].starts && this.saledata[i].starts <= this.value[1] && this.value[1] <= this.saledata[i].ends)
+                            ||( this.saledata[i].ends >= this.value[0]&& this.value[0] >= this.saledata[i].starts && this.value[1] >= this.saledata[i].ends)) {
+                            checking = 1;
+                            break;
+                        }
                     }
-                    if(this.saledata[i].plane === this.dataform.plane && this.saledata[i].date === this.dataform.date){ checking =1 ; break;}
                 }
-                if(this.dataform.plane===undefined || this.$store.state.sale_id ===0) checking=1;
-                if (checking===1)
+                if(this.dataform.plane.text===undefined || this.$store.state.sale_id ===0) checking=1;
+                return checking;
+            },
+            add(){
+                if (this.checking()===1)
                 return this.message="Added failed";
 
                 else{
