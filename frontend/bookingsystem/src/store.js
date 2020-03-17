@@ -2,19 +2,19 @@ import Vuex from 'vuex'
 
 export const store = new Vuex.Store({
     state: {
-        planes : '',
         sale_id:0,
+        id_plane:0,
     },
     getters: {
         myPlane: (state) => state.planes,
     },
     mutations:{
-      updatePlane(state,plane){
-          state.planes=plane;
-      },
-        updateID(state,id){
+        updateIDSale(state,id){
           state.sale_id= id;
 },
+        updateIDPlane(state,id){
+            state.id_plane= id;
+        },
 
     },
     strict: true

@@ -2,7 +2,7 @@ package connectDB.jdbc;
 import java.sql.*;
 
 public class createConnection {
-    private static String DB_URL="jdbc:mysql://localhost/housetouring?serverTimezone=UTC";
+    private static String DB_URL="jdbc:mysql://localhost/housebooking?serverTimezone=UTC";
     private static String username = "root";
     private static String password = "";
 

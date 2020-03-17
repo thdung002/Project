@@ -5,6 +5,7 @@ import connectDB.dao.*;
 import java.sql.SQLException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.BufferedReader;
@@ -17,51 +18,157 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class serverHandler implements connectDBService.Iface{
-     SaleDAO sale = SaleDAO.getInstance();
-     UserDAO usern =  UserDAO.getInstance();
-     BookingDAO bk =  BookingDAO.getInstance();
-     PlaneDAO pl =  PlaneDAO.getInstance();
+    SchedulerDAO schedu = SchedulerDAO.getInstance();
+    UserDAO usern =  UserDAO.getInstance();
+    BookingDAO bk =  BookingDAO.getInstance();
+    PlaneDAO pl =  PlaneDAO.getInstance();
 
     @Override
 
-    public List<sale> getSale() throws TException, SQLException, ClassNotFoundException {
+    public List<scheduler> GetScheduler() throws TException, SQLException, ClassNotFoundException {
 
-        return sale.getSalelist();
+        return schedu.GetScheduler();
     }
 
     @Override
-    public List<sale> getSalebyID(int id) throws TException, SQLException, ClassNotFoundException {
-        return sale.getSalebyID(id);
+    public List<scheduler> GetSchedulerById(int id) throws TException, SQLException, ClassNotFoundException {
+        return schedu.GetSchedulerByID(id);
     }
 
     @Override
-    public users getUsers(String usr, String pwd) throws TException, SQLException, ClassNotFoundException {
+    public users GetUsers(String usr, String pwd) throws TException, SQLException, ClassNotFoundException {
         return usern.getUserLogin(usr,pwd);
     }
 
     @Override
-    public List<booking> getBooking() throws TException, SQLException, ClassNotFoundException {
-        return bk.getBooking();
+    public List<booking> GetBooking() throws TException, SQLException, ClassNotFoundException {
+        return bk.GetBooking();
     }
 
     @Override
-    public List<plane> getPlane() throws TException, SQLException, ClassNotFoundException {
-        return pl.getPlane();
+    public List<booking> GetBookingById(int id) throws TException, SQLException, ClassNotFoundException {
+        return bk.GetBookingById(id);
     }
 
     @Override
-    public int insertBooking(booking infor) throws TException, SQLException, ClassNotFoundException {
-        if(bk.insertBooking(infor)==1) return 1;
+    public List<plane> GetPlaneForUser() throws TException, SQLException, ClassNotFoundException {
+        return pl.GetPlane();
+    }
+
+    @Override
+    public List<plane> GetPlane(int id) throws TException, SQLException, ClassNotFoundException {
+        return pl.GetPlane(id);
+    }
+
+    @Override
+    public int InsertBooking(booking infor) throws TException, SQLException, ClassNotFoundException {
+        if(bk.InsertBooking(infor)==1) return 1;
         else
-        return 0;
+            return 0;
     }
 
     @Override
-    public int insertSale(sale saleinfo) throws TException, SQLException, ClassNotFoundException {
-        if(sale.insertSale(saleinfo)==1) return 1;
+    public int InsertScheduler(scheduler sc) throws TException, SQLException, ClassNotFoundException {
+        if(schedu.InsertScheduler(sc)==1) return 1;
+        else
+            return 0;
+    }
+
+    @Override
+    public int InsertPlane(plane planes) throws TException, SQLException, ClassNotFoundException {
+        if(pl.InsertPlane(planes)== 1) return 1;
+        else
+            return 0;
+    }
+
+    @Override
+    public int UpdateScheduler(scheduler schedul) throws TException, SQLException, ClassNotFoundException {
+        if(schedu.UpdateScheduler(schedul)== 1) return 1;
         else
             return 0;
 
+    }
+
+    @Override
+    public int UpdatePlane(int id_plane, int id_sale) throws TException, SQLException, ClassNotFoundException {
+        if(pl.UpdatePlane(id_plane,id_sale)== 1) return 1;
+        else
+            return 0;
+
+    }
+
+    @Override
+    public int InsertOrUpdateScheduler(scheduler schedul) throws TException, SQLException, ClassNotFoundException {
+        List<scheduler> schedulDatabase = new ArrayList<>();
+        schedulDatabase = schedu.GetSchedulerByID(schedul.getId_sale());
+        int result=0;//0 is false, 1 is success
+        int checking=0;
+        for(scheduler scheduldata : schedulDatabase)
+            if(scheduldata.getDateCreated().contains(schedul.getDateCreated()))
+            {
+                checking=1;
+                break;
+            }
+        if(checking==0)//add new
+        {
+            InsertScheduler(schedul);
+            UpdatePlane(schedul.getId_plane(),schedul.getId_sale());
+            result=7;
+
+        }
+        else {
+            for (scheduler scheduldata : schedulDatabase) {
+                if (scheduldata.getDateCreated().contains(schedul.getDateCreated())) {
+                    if (scheduldata.getId_plane() == schedul.getId_plane()) {
+                        if (schedul.getStarts() >= scheduldata.getStarts() && schedul.getStarts() <= scheduldata.getEnds() && schedul.getEnds() >= scheduldata.getEnds())// if new start time in [start,end]
+                        {
+                            schedul.setStarts(scheduldata.getStarts());
+                            UpdateScheduler(schedul);
+                            result = 2;
+                            break;
+                        }
+                        if (schedul.getEnds() >= scheduldata.getStarts() && schedul.getEnds() <= scheduldata.getEnds() && schedul.getStarts() <= scheduldata.getStarts())// if new end in time [start,end]
+                        {
+                            schedul.setEnds(scheduldata.getEnds());
+                            UpdateScheduler(schedul);
+                            result = 3;
+                            break;
+                        }
+                        if (schedul.getStarts() < scheduldata.getStarts() && schedul.getEnds() > scheduldata.getEnds()) // if both new time start, end is bigger than the old [start,end]
+                        {
+                            UpdateScheduler(schedul);
+                            result = 4;
+                            break;
+                        }
+                        if ((schedul.getStarts() < scheduldata.getStarts() && schedul.getEnds() < scheduldata.getStarts()) || (schedul.getStarts() > scheduldata.getEnds() && schedul.getEnds() > scheduldata.getEnds())) //if out of range insert new
+                        {
+                            InsertScheduler(schedul);
+                            UpdatePlane(schedul.getId_plane(), schedul.getId_sale());
+                            result = 5;
+                            break;
+                        }
+                    }
+                    if ((scheduldata.getId_plane() != schedul.getId_plane()) &&
+                            ((schedul.getStarts() < scheduldata.getStarts() && schedul.getEnds() < scheduldata.getStarts())
+                                    || (schedul.getStarts() > scheduldata.getEnds() && schedul.getEnds() > scheduldata.getEnds())))  //if out of range insert new
+                    {
+                        InsertScheduler(schedul);
+                        UpdatePlane(schedul.getId_plane(), schedul.getId_sale());
+                        result = 6;
+                        break;
+                    }
+
+                }
+
+            }
+        }
+        System.out.println("Result: "+ result);
+        return result;
+    }
+
+    @Override
+    public List<users> GetListSale() throws TException, SQLException, ClassNotFoundException {
+        return usern.GetListSale();
     }
 
 }

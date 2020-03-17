@@ -22,7 +22,7 @@ public static BookingDAO getInstance() {
     ///end of init
 
 
-    public List<booking> getBooking() throws SQLException, ClassNotFoundException
+    public List<booking> GetBooking() throws SQLException, ClassNotFoundException
     {
         Connection conn = getConnection();
 
@@ -32,12 +32,14 @@ public static BookingDAO getInstance() {
             ResultSet rs = statement.executeQuery("select * from booking");
             while(rs.next()){
                 booking bk=new booking();
+                bk.setId_booking(Integer.parseInt(rs.getString("ID_Booking")));
                 bk.setFull_name(rs.getString("Full_name"));
                 bk.setEmail(rs.getString("Email"));
-                bk.setId_plane(rs.getString("ID_Plane"));
+                bk.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));
                 bk.setPhone(rs.getString("Phone"));
-                bk.setTime(rs.getString("Time"));
-                bk.setDate(rs.getString("Date"));
+                bk.setTimebooking(rs.getString("Timebooking"));
+                bk.setDatebooking(rs.getString("Datebooking"));
+                bk.setId_sale(Integer.parseInt(rs.getString("ID_sale")));
                 bookinglist.add(bk);
             }
             return bookinglist;
@@ -52,18 +54,53 @@ public static BookingDAO getInstance() {
 
 
     }
-    public int insertBooking(booking book) throws SQLException, ClassNotFoundException
+    public List<booking> GetBookingById(int id) throws SQLException, ClassNotFoundException
+    {
+        Connection conn = getConnection();
+
+        try {
+            List<booking> bookinglist = new ArrayList<>();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("select * from booking where Id_sale="+id);
+            while(rs.next()){
+                booking bk=new booking();
+                bk.setId_booking(Integer.parseInt(rs.getString("ID_Booking")));
+                bk.setFull_name(rs.getString("Full_name"));
+                bk.setEmail(rs.getString("Email"));
+                bk.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));
+                bk.setPhone(rs.getString("Phone"));
+                bk.setTimebooking(rs.getString("Timebooking"));
+                bk.setDatebooking(rs.getString("Datebooking"));
+                bk.setId_sale(Integer.parseInt(rs.getString("ID_sale")));
+                bookinglist.add(bk);
+            }
+            return bookinglist;
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return null;
+        }
+        finally{
+            conn.close();
+        }
+
+
+    }
+
+
+    public int InsertBooking(booking book) throws SQLException, ClassNotFoundException
     {
         Connection conn = getConnection();
         try{
             PreparedStatement ps = conn.prepareStatement
-                    ("INSERT INTO `booking`(`Full_name`, `Email`, `Phone`, `Date`, `ID_Plane`, `Time`) VALUES (?,?,?,?,?,?)");
+                    ("INSERT INTO `booking`(`Full_name`, `Email`, `Phone`, `Datebooking`, `ID_Plane`, `Timebooking`,`ID_sale`) VALUES (?,?,?,?,?,?,?)");
             ps.setString(1,book.getFull_name());
             ps.setString(2,book.getEmail());
             ps.setString(3,book.getPhone());
-            ps.setString(4,book.getDate());
-            ps.setString(5,book.getId_plane());
-            ps.setString(6,book.getTime());
+            ps.setString(4,book.getDatebooking());
+            ps.setInt(5,book.getId_plane());
+            ps.setString(6,book.getTimebooking());
+            ps.setInt(7,book.getId_sale());
             ps.executeUpdate();
             return 1;
         }

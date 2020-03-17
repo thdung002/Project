@@ -27,20 +27,20 @@
                             <div class="form-group">
                                 <label>Choose plane</label>
                                 <select class="form-control" v-model="dataform.plane">
-                                    <option v-for="(plane,index) in planedata" :key="index"  :value="{id: plane.id_plane, text: plane.planename}">{{plane.planename}}</option>
+                                    <option v-for="(plane,index) in planedata" :key="index"  :value="{id: plane.Id_plane, text: plane.planename}">{{plane.planename}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Your worktime</label>
                                 <div class="form-group">
                                     <vue-range-slider ref="slider" v-model="value" :min="min" :max="max"  :enable-cross="enableCross"
-                                                      :step="step" :min-range="minrange" :formatter="formatter"></vue-range-slider>
+                                                      :step="step" :min-range="minrange"></vue-range-slider>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-danger">Add</button>
                                 <button type="reset" class="btn btn-success">Reset</button>
-                                <label class="label label-success">{{message}}</label>
+                                <label class="label label-success">{{message}} ----- {{success}}</label>
                             </div>
 
                         </div>
@@ -65,11 +65,11 @@
                     <table-component :data="saledata"
                     sort-by="date"
                     sort-order="asc">
-                        <table-column show="id" label="Sale ID"></table-column>
-                        <table-column show="date" label="Date" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                        <table-column show="starts" label="Work Time"></table-column>
-                        <table-column show="ends" label="Work Time"></table-column>
-                        <table-column show="plane" label="Plane"  :filterable="true"></table-column>
+                        <table-column show="Id_sale" label="Sale ID"></table-column>
+                        <table-column show="Id_plane" label="Plane"></table-column>
+                        <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
+                        <table-column show="Starts" label="Start Time"></table-column>
+                        <table-column show="Ends" label="End Time"></table-column>
                     </table-component>
 
             </div>
@@ -101,10 +101,20 @@
                 planedata:{},//data from master database plane
                 message:"",
                 value:[0,24],
+                success:"",
+            }
+        },
+        beforeCreate(){
+            if(this.$cookie.get('CurrentAccountID')===null || this.$cookie.get('CurrentAccountID')==='0'){
+                this.$router.push('/login');
             }
         },
         methods:{
             logout(){
+                axios.get("http://localhost:8000/logout").then((respone) => {
+                    console.log(respone);
+
+                });
                 this.$store.commit('updateID',0);
                 this.$router.push('/login');
             },
@@ -114,27 +124,12 @@
             datestamp(date){
                 return moment(date).format("DD/MM/YYYY");
             },
-            checking(){
-                let checking=0;
-                for(let i=0;i<this.saledata.length;i++) {
-                    if (this.saledata[i].date === this.dataform.date && (this.saledata[i].plane === this.dataform.plane.text || this.saledata[i].plane !== this.dataform.plane.text)) {
-                        if ((this.value[0] >= this.saledata[i].starts && this.value[1] <= this.saledata[i].ends)
-                            || (this.value[0] <= this.saledata[i].starts && this.saledata[i].starts <= this.value[1] && this.value[1] <= this.saledata[i].ends)
-                            ||( this.saledata[i].ends >= this.value[0]&& this.value[0] >= this.saledata[i].starts && this.value[1] >= this.saledata[i].ends)) {
-                            checking = 1;
-                            break;
-                        }
-                    }
-                }
-                if(this.dataform.plane.text===undefined || this.$store.state.sale_id ===0) checking=1;
-                return checking;
-            },
             add(){
-                if (this.checking()===1)
+                if(this.dataform.plane.text===undefined)
                 return this.message="Added failed";
 
                 else{
-                    axios.post("http://localhost:8000/admin/sale?id="+this.$store.state.sale_id+"&date="+this.dataform.date+"&plane="+this.dataform.plane.text+"&start="+this.value[0]+"&end="+this.value[1]+"&idplane="+this.dataform.plane.id).then((respone)=>{
+                    axios.post("http://localhost:8000/admin/sale?id="+this.$cookie.get('CurrentAccountID')+"&date="+this.dataform.date+"&start="+this.value[0]+"&end="+this.value[1]+"&idplane="+this.dataform.plane.id).then((respone)=>{
                         console.log(respone);
                         if(respone.data.result>0){
                             this.message="You added success!";
@@ -149,24 +144,6 @@
                 }
             },
         },
-        mounted() {
-
-                axios.get("http://localhost:8000/admin/sale?id="+ this.$store.state.sale_id).then((respone)=>{
-                console.log(respone);
-                this.saledata = respone.data;
-            });
-                axios.get("http://localhost:8000/admin/booking").then((respone)=>{
-                    console.log(respone);
-                    this.userdata = respone.data;
-                });
-                axios.get("http://localhost:8000/admin/plane").then((respone)=>{
-                    console.log(respone);
-                    this.planedata = respone.data;
-                });
-
-
-
-        },
         components: {
             VueRangeSlider
         },
@@ -176,6 +153,20 @@
             this.step=0.5;
             this.minrange=2;
             this.enableCross = false;
+
+            axios.get("http://localhost:8000/admin/sale?id=" + this.$cookie.get('CurrentAccountID')).then((respone) => {
+                console.log(respone);
+                this.saledata = respone.data;
+            });
+            axios.get("http://localhost:8000/admin/booking?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
+                console.log(respone);
+                this.userdata = respone.data;
+            });
+            axios.get("http://localhost:8000/admin/plane?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
+                console.log(respone);
+                this.planedata = respone.data;
+            });
+
         }
 
     }

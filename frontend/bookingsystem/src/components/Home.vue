@@ -33,13 +33,17 @@
                                         <!-- ARTICLE -->
                                         <article class="article widget-article" >
 
-                                            <div class="article-body">
-                                                <h4 class="article-title" @click="planeclick(planes.id_plane)"><a href="#">{{planes.plane}}</a></h4>
+                                            <div class="article-body" v-for="(name,ind) in planename"
+                                            :key="ind">
+                                                <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)"
+                                                    v-show="planes.Id_plane === name.Id_plane"><a href="#">{{name.planename}}</a></h4>
                                                 <ul class="article-meta">
-                                                    <li v-for="(item,ind) in unionAll"
-                                                    :key="ind"
-                                                    v-show="item.plane == planes.plane">
-                                                        <i class="fa fa-clock-o"></i> Ngày có sale rảnh: {{datestamp(item.date)}}</li>
+                                                    <li v-for="(sale,i) in listsale" :key="i"
+                                                        v-show="sale.Id_sale === planes.Id_sale"><b>{{sale.Fullname}}</b></li>
+                                                    <li class="fa fa-clock-o" v-for="(item,inde) in unionAll"
+                                                    :key="inde"
+                                                    v-show="item.Id_plane === planes.Id_plane">
+                                                        <i>Ngày làm việc: {{datestamp(item.DateCreated)}}</i> </li>
                                                 </ul>
                                             </div>
                                         </article>
@@ -72,15 +76,19 @@
         data:function(){
             return{
                 planedata:{},
+                planename:{},
+                listsale:{},
             }
         },
         methods:{
             login(){
                 this.$router.push('/login');
             },
-            planeclick(planes){
-                this.$store.commit('updatePlane',planes);
+            planeclick(idplane, idsale ){
+                this.$store.commit('updateIDPlane',idplane);
+                this.$store.commit('updateIDSale',idsale);
                 this.$router.push('/user');
+
             },
             datestamp(date){
                 return moment(date).format("DD/MM/YYYY");
@@ -100,11 +108,20 @@
 
         },
 
-        mounted(){
+        created(){
             axios.get("http://localhost:8000/sale").then((respone)=>{
                 console.log(respone);
                 this.planedata = respone.data;
             });
+            axios.get("http://localhost:8000/plane").then((respone)=>{
+                console.log(respone);
+                this.planename = respone.data;
+            });
+            axios.get("http://localhost:8000/login").then((respone)=>{
+                console.log(respone);
+                this.listsale = respone.data;
+            });
+
         },
 
     }

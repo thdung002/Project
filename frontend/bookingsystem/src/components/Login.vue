@@ -39,13 +39,20 @@
                 },
             }
         },
+        // beforeCreate(){
+        //     if(this.$cookie.get('CurrentAccountID')!==null|| this.$cookie.get('CurrentAccountID')==='0')
+        //     {
+        //         this.$router.push('/scheduler');
+        //     }
+        // },
         methods:{
             login(){
+                axios.defaults.withCredentials=true;
                 axios.post("http://localhost:8000/login?username="+ this.formdata.username+"&password="+this.formdata.password).then((response)=>{
                     console.log(response.data);
-                    if(response.data.id_sale>0){
+                    if(response.data.Id_sale>0){
                         alert("Log in successful");
-                        this.$store.commit('updateID',response.data.id_sale);
+                        this.$store.commit('updateID',response.data.Id_sale);
                         this.$router.push('/scheduler');
                     }
                     else {

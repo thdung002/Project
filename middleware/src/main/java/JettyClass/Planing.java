@@ -7,6 +7,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -24,19 +26,25 @@ public class Planing extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         System.out.println("GET PLANE REQUEST");
         try {
-            resp.addHeader("Access-Control-Allow-Origin", "*");
-            TTransport transport; //1
-            transport = new TSocket("localhost",9090); //2
-            transport.open(); //3
-            TProtocol protocol = new TBinaryProtocol(transport); //4
-            connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
-            List<plane> lstplane = client.getPlane();
-            resp.setContentType("application/json;charset=UTF-8");
-            ServletOutputStream out = resp.getOutputStream();
-            Gson gson = new GsonBuilder().create();
-            JsonArray arr = gson.toJsonTree(lstplane).getAsJsonArray();
-            out.print(arr.toString());
-            transport.close();
+            resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
+            HttpSession session=req.getSession(false);
+            int id = Integer.parseInt(req.getParameter("id"));
+            if(session != null ) {
+
+                TTransport transport; //1
+                transport = new TSocket("localhost", 9090); //2
+                transport.open(); //3
+                TProtocol protocol = new TBinaryProtocol(transport); //4
+                connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
+                List<plane> lstplane = client.GetPlane(id);
+                resp.setContentType("application/json;charset=UTF-8");
+                ServletOutputStream out = resp.getOutputStream();
+                Gson gson = new GsonBuilder().create();
+                JsonArray arr = gson.toJsonTree(lstplane).getAsJsonArray();
+                out.print(arr.toString());
+                transport.close();
+            }
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {

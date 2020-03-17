@@ -23,6 +23,7 @@ public class JavaClient {
             transport.open();
             TProtocol protocol = new TBinaryProtocol(transport);
             connectDB.connectDBService.Client client = new connectDB.connectDBService.Client(protocol);
+
         } catch (TTransportException e) {
             e.printStackTrace();
         }

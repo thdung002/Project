@@ -30,12 +30,13 @@ public class AddBooking extends HttpServlet {
         book.setFull_name(req.getParameter("fn"));
         book.setEmail(req.getParameter("email"));
         book.setPhone(req.getParameter("phone"));
-        book.setDate(req.getParameter("date"));
-        book.setId_plane(req.getParameter("idplane"));
-        book.setTime(req.getParameter("time"));
+        book.setDatebooking(req.getParameter("date"));
+        book.setId_plane(Integer.parseInt(req.getParameter("idplane")));
+        book.setTimebooking(req.getParameter("time"));
+        book.setId_sale(Integer.parseInt(req.getParameter("idsale")));
         System.out.println("Add booking");
         try {
-            resp.addHeader("Access-Control-Allow-Origin", "*");
+            resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Methods", "POST, GET");
             resp.setContentType("application/json;charset=UTF-8");
 
@@ -44,7 +45,7 @@ public class AddBooking extends HttpServlet {
             transport.open(); //3
             TProtocol protocol = new TBinaryProtocol(transport); //4
             connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
-            int result = client.insertBooking(book);
+            int result = client.InsertBooking(book);
             if(result == 1){
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();

@@ -49,9 +49,9 @@
                                         <select v-model="dataform.dateUserChoose" class="form-control" >
                                             <option
                                                     v-for="(dates, index) in saledata"
-                                                    v-show="planelast === dates.id_plane"
-                                                    :value="dates.date"
-                                                    :key="index">{{datestamp(dates.date)}}- Start from {{timestamp(dates.starts)}} to  {{timestamp(dates.ends)}}</option>
+                                                    v-show="planelast === dates.Id_plane"
+                                                    :value="dates.DateCreated"
+                                                    :key="index">{{datestamp(dates.DateCreated)}}- Start from {{timestamp(dates.Starts)}} to  {{timestamp(dates.Ends)}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -90,8 +90,8 @@
                 message:"",
                 success:0,
                 errors:[],
-                planelast : this.$store.state.planes,
-                timeval:""
+                planelast : this.$store.state.id_plane,
+                timeval: ""
             }
         },
         methods:{
@@ -120,8 +120,8 @@
                 let checking=0;
                 for(let i=0;i<this.saledata.length;i++)
                 {
-                    if(this.saledata[i].date === this.dataform.dateUserChoose )
-                        if(this.timeval <= this.timestamp(this.saledata[i].ends) && this.timeval >= this.timestamp(this.saledata[i].starts))
+                    if(this.saledata[i].DateCreated === this.dataform.dateUserChoose )
+                        if(this.timeval <= this.timestamp(this.saledata[i].Ends) && this.timeval >= this.timestamp(this.saledata[i].Starts))
                             {checking=1;
                                 break;}
                 }
@@ -145,7 +145,7 @@
                     this.errors.push("Time is not in range!")
                 }
                 if(!this.errors.length) {
-                    axios.post("http://localhost:8000/booking/add?fn="+this.dataform.name+"&email="+this.dataform.email+"&phone="+this.dataform.phone+"&date="+this.dataform.dateUserChoose+"&idplane="+this.$store.state.planes+"&time="+this.timeval).then((respone)=>{
+                    axios.post("http://localhost:8000/booking/add?fn="+this.dataform.name+"&email="+this.dataform.email+"&phone="+this.dataform.phone+"&date="+this.dataform.dateUserChoose+"&idplane="+this.$store.state.id_plane+"&time="+moment.duration(this.timeval).asHours()+"&idsale="+this.$store.state.sale_id).then((respone)=>{
                         console.log(respone);
                         if(respone.data.result>0){
                             this.message="You added success!";
@@ -158,7 +158,7 @@
                     })}
             }
         },
-        mounted() {
+        created() {
             axios.get("http://localhost:8000/sale").then((respone)=>{
                 console.log(respone);
                 this.saledata = respone.data;
