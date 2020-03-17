@@ -129,7 +129,8 @@
                 return this.message="Added failed";
 
                 else{
-                    axios.post("http://localhost:8000/admin/sale?id="+this.$cookie.get('CurrentAccountID')+"&date="+this.dataform.date+"&start="+this.value[0]+"&end="+this.value[1]+"&idplane="+this.dataform.plane.id).then((respone)=>{
+                    axios.post("http://localhost:8000/admin/sale?id="+this.$cookie.get('CurrentAccountID')+"&date="+this.dataform.date+"&start="+this.value[0]
+                        +"&end="+this.value[1]+"&idplane="+this.dataform.plane.id).then((respone)=>{
                         console.log(respone);
                         if(respone.data.result>0){
                             this.message="You added success!";
@@ -153,18 +154,24 @@
             this.step=0.5;
             this.minrange=2;
             this.enableCross = false;
-
+            axios.defaults.withCredentials=true;
             axios.get("http://localhost:8000/admin/sale?id=" + this.$cookie.get('CurrentAccountID')).then((respone) => {
                 console.log(respone);
                 this.saledata = respone.data;
+            }).catch(e=> {
+                console.log(e);
             });
             axios.get("http://localhost:8000/admin/booking?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
                 console.log(respone);
                 this.userdata = respone.data;
+            }).catch(e=> {
+                console.log(e);
             });
             axios.get("http://localhost:8000/admin/plane?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
                 console.log(respone);
                 this.planedata = respone.data;
+            }).catch(e=> {
+                console.log(e);
             });
 
         }
