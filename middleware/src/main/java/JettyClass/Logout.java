@@ -24,8 +24,8 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-            resp.addHeader("Access-Control-Allow-Methods", "POST, GET");
             resp.setContentType("application/json;charset=UTF-8");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
 
 
             HttpSession session = req.getSession(false);

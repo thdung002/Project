@@ -9,6 +9,7 @@ Vue.config.productionTip = false;
 Vue.use(Vuex);
 Vue.use(TableComponent);
 Vue.use(VueCookie);
+
 new Vue({
   el:'#app',
   router, store,

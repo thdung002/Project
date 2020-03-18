@@ -68,9 +68,12 @@
 </template>
 
 <script>
-    import axios from 'axios';
     import _ from 'lodash';
     import moment from 'moment';
+    import {GetScheduler} from "../service/SchedulerService/SchedulerForUser";
+    import {PlaneForUser} from "../service/PlaneService/PlaneForSale";
+    import {GetListLogin} from "../service/UserService/Login";
+
     export default {
         name: "Home",
         data:function(){
@@ -109,16 +112,18 @@
         },
 
         created(){
-            axios.get("http://localhost:8000/sale").then((respone)=>{
-                console.log(respone);
-                this.planedata = respone.data;
+
+             new GetScheduler().then(response=>{
+                console.log(response.data);
+                this.planedata = response.data;
             });
-            axios.get("http://localhost:8000/plane").then((respone)=>{
-                console.log(respone);
+
+             new PlaneForUser().then(respone=>{
+                console.log(respone.data);
                 this.planename = respone.data;
             });
-            axios.get("http://localhost:8000/login").then((respone)=>{
-                console.log(respone);
+             new GetListLogin().then(respone=>{
+                console.log(respone.data);
                 this.listsale = respone.data;
             });
 

@@ -85,7 +85,11 @@
 </template>
 
 <script>
-    import axios from 'axios';
+
+    import  * as Booking from '../service/UserService/BookingForSale';
+    import * as Plane from "../service/PlaneService/PlaneForSale";
+    import * as Scheduler from "../service/SchedulerService/SchedulerForSale";
+    import {Logout} from "../service/UserService/Logout";
     import 'vue-range-component/dist/vue-range-slider.css'
     import VueRangeSlider from 'vue-range-component'
 
@@ -111,11 +115,7 @@
         },
         methods:{
             logout(){
-                axios.get("http://localhost:8000/logout").then((respone) => {
-                    console.log(respone);
-
-                });
-                this.$store.commit('updateID',0);
+            Logout();
                 this.$router.push('/login');
             },
             timestamp(hours){
@@ -129,17 +129,17 @@
                 return this.message="Added failed";
 
                 else{
-                    axios.post("http://localhost:8000/admin/sale?id="+this.$cookie.get('CurrentAccountID')+"&date="+this.dataform.date+"&start="+this.value[0]
-                        +"&end="+this.value[1]+"&idplane="+this.dataform.plane.id).then((respone)=>{
-                        console.log(respone);
-                        if(respone.data.result>0){
+                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'),this.dataform.date,this.value[0],this.value[1],this.dataform.plane.id).then(data =>{
+                        console.log(data);
+                        if(data.result >0)
+                        {
                             this.message="You added success!";
-                            this.success=respone.data.result;
-                            this.$forceUpdate();
+                            this.success=data.result;
                         }
                         else{
                             this.message="Added failed";
-                            this.success=respone.data.result;
+                            this.success=data.result;
+
                         }
                     })
                 }
@@ -154,24 +154,18 @@
             this.step=0.5;
             this.minrange=2;
             this.enableCross = false;
-            axios.defaults.withCredentials=true;
-            axios.get("http://localhost:8000/admin/sale?id=" + this.$cookie.get('CurrentAccountID')).then((respone) => {
-                console.log(respone);
-                this.saledata = respone.data;
-            }).catch(e=> {
-                console.log(e);
+
+            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(data =>{
+                console.log(data);
+                this.saledata=data;
             });
-            axios.get("http://localhost:8000/admin/booking?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
-                console.log(respone);
-                this.userdata = respone.data;
-            }).catch(e=> {
-                console.log(e);
+            new Booking.GetListBookingByID().then(data => {
+                console.log(data);
+                this.userdata = data;
             });
-            axios.get("http://localhost:8000/admin/plane?id="+ this.$cookie.get('CurrentAccountID')).then((respone) => {
-                console.log(respone);
-                this.planedata = respone.data;
-            }).catch(e=> {
-                console.log(e);
+            new Plane.PlaneForSale().then(data => {
+                console.log(data);
+                this.planedata=data;
             });
 
         }

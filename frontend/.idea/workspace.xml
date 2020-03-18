@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e34a21-8260-445d-a78d-91904658909a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bookingsystem/src/service/http.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookingsystem/src/service/PlaneService/PlaneForSale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bookingsystem/src/service/SchedulerService/SchedulerForSale.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/PlaneService/GetPlaneForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/service/PlaneService/PlaneForUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/PlaneService/GetPlaneForUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/service/SchedulerService/SchedulerForUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/SchedulerService/GetListSchedulerForSale.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/SchedulerService/GetListSchedulerForUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/UserService/GetListUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/service/http.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AddBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AddBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SchedulerByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SchedulerByID.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +119,7 @@
       <workItem from="1584064770399" duration="22144000" />
       <workItem from="1584333027372" duration="12318000" />
       <workItem from="1584409959095" duration="11719000" />
+      <workItem from="1584496713005" duration="6410000" />
     </task>
     <servers />
   </component>

@@ -27,7 +27,8 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import {Login} from "../service/UserService/Login";
+
     export default {
         name: "Login",
         data(){
@@ -46,17 +47,14 @@
         // },
         methods:{
             login(){
-                axios.defaults.withCredentials=true;
-                axios.post("http://localhost:8000/login?username="+ this.formdata.username+"&password="+this.formdata.password).then((response)=>{
-                    console.log(response.data);
-                    if(response.data.Id_sale>0){
+                new Login(this.formdata.username,this.formdata.password).then(data =>{
+                    if(data.Id_sale>0){
                         alert("Log in successful");
-                        this.$store.commit('updateID',response.data.Id_sale);
                         this.$router.push('/scheduler');
                     }
-                    else {
+                    else{
+                        alert("Login faile");
                         this.$router.push('/login');
-                        alert("Log in failed.");
                     }
                 })
             },

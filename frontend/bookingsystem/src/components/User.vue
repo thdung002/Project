@@ -77,9 +77,10 @@
 </template>
 
 <script>
-    import axios from 'axios';
     import moment from 'moment';
     import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue'
+    import {GetScheduler} from "../service/SchedulerService/SchedulerForUser";
+    import {AddBooking} from "../service/UserService/BookingForUser";
 
     export default {
         name: "User",
@@ -145,26 +146,24 @@
                     this.errors.push("Time is not in range!")
                 }
                 if(!this.errors.length) {
-                    axios.post("http://localhost:8000/booking/add?fn="+this.dataform.name+"&email="+this.dataform.email+"&phone="+this.dataform.phone+"&date="+this.dataform.dateUserChoose+"&idplane="+this.$store.state.id_plane+"&time="+moment.duration(this.timeval).asHours()+"&idsale="+this.$store.state.sale_id).then((respone)=>{
-                        console.log(respone);
-                        if(respone.data.result>0){
+                    new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,moment.duration(this.timeval).asHours(),this.$store.state.sale_id).then((data)=>{
+                        console.log(data);
+                        if(data.result>0){
                             this.message="You added success!";
-                            this.success=respone.data.result;
+                            this.success=data.result;
                         }
                         else{
                             this.message="Added failed";
-                            this.success=respone.data.result;
+                            this.success=data.result;
                         }
                     })}
             }
         },
         created() {
-            axios.get("http://localhost:8000/sale").then((respone)=>{
-                console.log(respone);
-                this.saledata = respone.data;
-
+            new GetScheduler().then(data =>{
+                console.log(data);
+                this.saledata=data;
             })
-
         },
         components:{VueTimepicker }
     }

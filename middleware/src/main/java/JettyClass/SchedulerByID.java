@@ -63,7 +63,6 @@ public class SchedulerByID extends HttpServlet{
         System.out.println("Add sale");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-            resp.addHeader("Access-Control-Allow-Methods", "POST, GET");
             resp.addHeader("Access-Control-Allow-Credentials","true");
 
             resp.setContentType("application/json;charset=UTF-8");

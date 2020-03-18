@@ -37,8 +37,8 @@ public class AddBooking extends HttpServlet {
         System.out.println("Add booking");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-            resp.addHeader("Access-Control-Allow-Methods", "POST, GET");
             resp.setContentType("application/json;charset=UTF-8");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
 
             TTransport transport; //1
             transport = new TSocket("localhost",9090); //2
