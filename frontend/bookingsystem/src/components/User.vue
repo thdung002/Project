@@ -146,15 +146,15 @@
                     this.errors.push("Time is not in range!")
                 }
                 if(!this.errors.length) {
-                    new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,moment.duration(this.timeval).asHours(),this.$store.state.sale_id).then((data)=>{
-                        console.log(data);
-                        if(data.result>0){
+                    new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,moment.duration(this.timeval).asHours(),this.$store.state.sale_id).then((respone)=>{
+                        console.log(respone.data);
+                        if(respone.data.result>0){
                             this.message="You added success!";
-                            this.success=data.result;
+                            this.success=respone.data.result;
                         }
                         else{
                             this.message="Added failed";
-                            this.success=data.result;
+                            this.success=respone.data.result;
                         }
                     })}
             }

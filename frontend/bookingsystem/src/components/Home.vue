@@ -28,22 +28,20 @@
                                 <!-- row -->
                                 <div class="row">
                                     <!-- Column 1 -->
-                                    <div class="col-md-4 col-sm-6" v-for="(planes,index) in uniqPlane "
+                                    <div class="col-md-4 col-sm-6" v-for="(planes,index) in planedata "
                                          :key="index" >
                                         <!-- ARTICLE -->
                                         <article class="article widget-article" >
 
-                                            <div class="article-body" v-for="(name,ind) in planename"
-                                            :key="ind">
-                                                <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)"
+                                            <div class="article-body" >
+                                                <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)" v-for="(name,ind) in planename"
+                                                    :key="ind"
                                                     v-show="planes.Id_plane === name.Id_plane"><a href="#">{{name.planename}}</a></h4>
                                                 <ul class="article-meta">
                                                     <li v-for="(sale,i) in listsale" :key="i"
                                                         v-show="sale.Id_sale === planes.Id_sale"><b>{{sale.Fullname}}</b></li>
-                                                    <li class="fa fa-clock-o" v-for="(item,inde) in unionAll"
-                                                    :key="inde"
-                                                    v-show="item.Id_plane === planes.Id_plane">
-                                                        <i>Ngày làm việc: {{datestamp(item.DateCreated)}}</i> </li>
+                                                    <li>
+                                                        <i>Ngày làm việc: {{datestamp(planes.DateCreated)}}</i> </li>
                                                 </ul>
                                             </div>
                                         </article>

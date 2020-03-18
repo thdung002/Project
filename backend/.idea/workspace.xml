@@ -5,18 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/PlaneService/PlaneForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/PlaneService/PlaneForSale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/PlaneService/PlaneForUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/PlaneService/PlaneForUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SchedulerService/SchedulerForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SchedulerService/SchedulerForSale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SchedulerService/SchedulerForUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SchedulerService/SchedulerForUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/http.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AddBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AddBooking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/Logout.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/Logout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/SchedulerByID.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/SchedulerByID.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
