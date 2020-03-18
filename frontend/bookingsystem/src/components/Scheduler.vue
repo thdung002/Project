@@ -159,13 +159,13 @@
                 console.log(data);
                 this.saledata=data;
             });
-            new Booking.GetListBookingByID().then(data => {
-                console.log(data);
-                this.userdata = data;
+            new Booking.GetListBookingByID(this.$cookie.get('CurrentAccountID')).then(respone => {
+                console.log(respone.data);
+                this.userdata = respone.data;
             });
-            new Plane.PlaneForSale().then(data => {
-                console.log(data);
-                this.planedata=data;
+            new Plane.PlaneForSale(this.$cookie.get('CurrentAccountID')).then(respone => {
+                console.log(respone.data);
+                this.planedata=respone.data;
             });
 
         }

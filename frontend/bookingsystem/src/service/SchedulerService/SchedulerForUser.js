@@ -1,7 +1,7 @@
 import axios from '../http'
 export function GetScheduler(){
-    return axios.get("http://localhost:8000/sale").then(respone=> {
-         return respone.data;
+    return axios.get('/sale').then(respone=> {
+         return respone;
     }).catch(e=> {
         console.log(e);
     });

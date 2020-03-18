@@ -160,9 +160,9 @@
             }
         },
         created() {
-            new GetScheduler().then(data =>{
-                console.log(data);
-                this.saledata=data;
+            new GetScheduler().then(respone =>{
+                console.log(respone.data);
+                this.saledata=respone.data;
             })
         },
         components:{VueTimepicker }

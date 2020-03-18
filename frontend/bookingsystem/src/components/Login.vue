@@ -47,8 +47,8 @@
         // },
         methods:{
             login(){
-                new Login(this.formdata.username,this.formdata.password).then(data =>{
-                    if(data.Id_sale>0){
+                new Login(this.formdata.username,this.formdata.password).then(respone =>{
+                    if(respone.data.Id_sale>0){
                         alert("Log in successful");
                         this.$router.push('/scheduler');
                     }

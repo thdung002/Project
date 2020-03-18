@@ -71,7 +71,7 @@
     import _ from 'lodash';
     import moment from 'moment';
     import {GetScheduler} from "../service/SchedulerService/SchedulerForUser";
-    import {PlaneForUser} from "../service/PlaneService/PlaneForSale";
+    import {PlaneForUser} from "../service/PlaneService/PlaneForUser";
     import {GetListLogin} from "../service/UserService/Login";
 
     export default {
@@ -117,16 +117,16 @@
                 console.log(response.data);
                 this.planedata = response.data;
             });
-
-             new PlaneForUser().then(respone=>{
-                console.log(respone.data);
-                this.planename = respone.data;
-            });
-             new GetListLogin().then(respone=>{
+            new GetListLogin().then(respone=>{
                 console.log(respone.data);
                 this.listsale = respone.data;
             });
 
+
+            new PlaneForUser(this.$cookie.get('CurrentAccountID')).then(respone=>{
+                console.log(respone.data);
+                this.planename = respone.data;
+            });
         },
 
     }
