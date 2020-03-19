@@ -2,9 +2,13 @@
     <div>
         <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
             <div style='float: right' class = "form-header">
-                <button class="btn btn-warning" @click="login">
+                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== '0'">
                     Login
                 </button>
+                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') !== '0'">
+                    Account Page
+                </button>
+
             </div>
         </nav>
 
@@ -21,6 +25,7 @@
                         <div class="section-title">
                             <h2 class="title">Địa chỉ nhà</h2>
                         </div>
+                        <br>
                         <div class="tab-content">
                             <!-- tab1 -->
                             <div id="tab1" class="tab-pane fade in active">
@@ -32,11 +37,16 @@
                                          :key="index" >
                                         <!-- ARTICLE -->
                                         <article class="article widget-article" >
-
+<!--                                            Img here-->
+<!--                                            <div class="article-img">-->
+<!--                                                <a href="#">-->
+<!--                                                    <img src="../assets/img/img-widget-1.jpg" alt="">-->
+<!--                                                </a>-->
+<!--                                            </div>-->
                                             <div class="article-body" >
                                                 <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)"><a href="#">{{planes.planename}}</a></h4>
                                                 <ul class="article-meta">
-                                                    <li><b>{{planes.Fullname}}</b></li>
+                                                    <b> {{planes.Fullname}}</b>
                                                     <li>
                                                         <i>Ngày làm việc: {{datestamp(planes.DateCreated)}}</i> </li>
                                                 </ul>
@@ -124,7 +134,7 @@
 </script>
 
 <style scoped>
-    @import '../assets/css/style.css';
+    @import '../assets/css/style2.css';
     @import '../assets/css/bootstrap.min.css';
 
 </style>

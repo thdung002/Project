@@ -6,7 +6,7 @@ import Scheduler from '@/components/Scheduler'
 import Home from '@/components/Home'
 import Admin from '@/components/Admin'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     base: process.env.BASEL_URL,

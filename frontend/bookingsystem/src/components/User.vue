@@ -2,8 +2,11 @@
     <div id="booking" class="section">
         <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
             <div style='float: right' class = "form-header">
-                <button class="btn btn-warning" @click="login">
+                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== null">
                     Login
+                </button>
+                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') !== null">
+                    Account Page
                 </button>
             </div>
             <div style='float: left' class = "form-header">
@@ -146,7 +149,7 @@
                     this.errors.push("Time is not in range!")
                 }
                 if(!this.errors.length) {
-                    new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,moment.duration(this.timeval).asHours(),this.$store.state.sale_id).then((respone)=>{
+                    new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,this.timeval,this.$store.state.sale_id).then((respone)=>{
                         console.log(respone.data);
                         if(respone.data.result>0){
                             this.message="You added success!";

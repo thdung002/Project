@@ -19,7 +19,9 @@
                         <table-component :data="BookingList"
                                          sort-by="date"
                                          sort-order="asc"
-                                         ref="table">
+                                         ref="table"
+                                         filter-no-results="Not match anything">
+
                             <table-column show="Full_name" label="Full Name" :filterable="true"></table-column>
                             <table-column show="Email" label="Email"></table-column>
                             <table-column show="Phone" label="Phone number"></table-column>
@@ -33,12 +35,22 @@
                         <table-component :data="SchedulerMerge"
                                          sort-by="date"
                                          sort-order="asc"
-                                         ref="table">
+                                         ref="table"
+                                         filter-no-results="Not match anything">
+
                             <table-column show="Fullname" label="Sale name"></table-column>
                             <table-column show="planename" label="Location"></table-column>
                             <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                            <table-column show="Starts" label="Start Time"></table-column>
-                            <table-column show="Ends" label="End Time"></table-column>
+                            <table-column label="Start Time">
+                                <template slot-scope="row">
+                                    <tr>{{timestamp(row.Starts)}}</tr>
+                                </template>
+                            </table-column>
+                            <table-column label="End Time">
+                                <template slot-scope="row">
+                                    <tr>{{timestamp(row.Ends)}}</tr>
+                                </template>
+                            </table-column>
                         </table-component>
 
                         <br>
@@ -46,10 +58,12 @@
                         <table-component :data="PlaneList"
                                          sort-by="date"
                                          sort-order="asc"
-                                         ref="table">
+                                         ref="table"
+                                         filter-no-results="Not match anything">
+
                             <table-column show="Id_plane" label="Plane ID"></table-column>
                             <table-column show="planename" label="Location"></table-column>
-                            <table-column show="Fullname" label="ID SALE" :filterable="true" :sortable="true" ></table-column>
+                            <table-column show="Fullname" label="Sale name" :filterable="true" :sortable="true" ></table-column>
                         </table-component>
 
                         <br>
@@ -57,11 +71,13 @@
                         <table-component :data="userdata"
                                          sort-by="date"
                                          sort-order="asc"
-                                         ref="table">
+                                         ref="table"
+                                         filter-no-results="Not match anything">
+
                             <table-column show="Id_sale" label="Sale ID"></table-column>
                             <table-column show="Fullname" label="Full name" :filterable="true" :sortable="true"></table-column>
                             <table-column show="username" label="Username"></table-column>
-                            <table-column show="password" label="Password"></table-column>
+<!--                            <table-column show="password" label="Password"></table-column>-->
                             <table-column show="AccountType" label="Account Type"></table-column>
                         </table-component>
 
@@ -82,7 +98,7 @@
     import {GetAllBooking} from "../service/AdminServices/BookingForAdmin";
     import {GetAllPlane} from "../service/AdminServices/PlaneForAdmin";
     import {GetScheduler} from "../service/UserServices/SchedulerForUser";
-
+    import moment from 'moment';
     export default {
         name: "Admin",
         data(){
@@ -97,10 +113,14 @@
             logout(){
                 Logout();
                 this.$router.push('/login');
-            }
+            },
+            timestamp(hours){
+                return moment.utc(hours*3600*1000).format('HH:mm')
+            },
+
         },
         beforeCreate(){
-            if(this.$cookie.get('CurrentAccountID')===null || this.$cookie.get('CurrentAccountID')==='0'){
+            if(this.$cookie.get('CurrentAccountID')=== null || this.$cookie.get('CurrentAccountType') > '1'|| this.$cookie.get('CurrentAccountType') === '0'){
                 this.$router.push('/login');
             }
         },
@@ -124,6 +144,7 @@
             });
         },
         computed:{
+
             SchedulerMerge(){
                 return this.schedulerdata.map(item => {
                     const obj = this.planedata.find(o =>o.Id_plane === item.Id_plane);

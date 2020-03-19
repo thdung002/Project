@@ -39,27 +39,27 @@
                 },
             }
         },
-        // beforeCreate(){
-        //     if(this.$cookie.get('CurrentAccountID')!==null|| this.$cookie.get('CurrentAccountID')==='0')
-        //     {
-        //         this.$router.push('/scheduler');
-        //     }
-        // },
+        mounted(){
+            if(this.$cookie.get('CurrentAccountID') !== null)
+            {
+                this.$router.push('/scheduler');
+            }
+        },
         methods:{
             login(){
                 new Login(this.formdata.username,this.formdata.password).then(respone =>{
                     if(respone.data.Id_sale>0){
-                        if(this.$cookie.get('CurrentAccountType')>0){
+                        if(this.$cookie.get('CurrentAccountType')>'1'){
                             alert("Log in successful");
                             this.$router.push('/scheduler');
                         }
-                        else{
+                        else if( this.$cookie.get('CurrentAccountType')==='1'){
                             alert("Log in successful");
                             this.$router.push('/admin');
                         }
                     }
                     else{
-                        alert("Login faile");
+                        alert("Login failed");
                         this.$router.push('/login');
                     }
                 })

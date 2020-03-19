@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-danger">Add</button>
                                 <button type="reset" class="btn btn-success">Reset</button>
-                                <label class="label label-success">{{message}} ----- {{success}}</label>
+                                <label class="label label-success">{{message}} - Code: {{success}}</label>
                             </div>
 
                         </div>
@@ -49,16 +49,26 @@
 
                 </form>
                 <h2>NOTE user</h2>
+
+
                 <table-component :data="BookingList"
                                  sort-by="date"
                                  sort-order="asc"
-                ref="table">
+                                 ref="table"
+                                 id="booking-table"
+                                 filter-no-results="Not match anything"
+                                 >
                     <table-column show="Full_name" label="Full Name" :filterable="true"></table-column>
                     <table-column show="Email" label="Email"></table-column>
                     <table-column show="Phone" label="Phone number"></table-column>
                     <table-column show="Datebooking" label="Date meeting" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
                     <table-column show="planename" label="Location"></table-column>
-                    <table-column show="Timebooking" label="Time meeting"></table-column>
+                    <table-column show="Timebooking" label="Time meting" :sortable="false" :filterable="false">
+<!--                        <template slot-scope="row">-->
+<!--                            <a :href="`#${row.Email}`">Edit</a>-->
+<!--                        </template>-->
+                    </table-column>
+
 
                 </table-component>
                 <br>
@@ -66,12 +76,21 @@
                     <table-component :data="MergeSale"
                     sort-by="date"
                     sort-order="asc"
-                    ref="table">
+                    ref="table"
+                    filter-no-results="Not match anything">
                         <table-column show="Id_sale" label="Sale ID"></table-column>
                         <table-column show="planename" label="Location"></table-column>
                         <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                        <table-column show="Starts" label="Start Time"></table-column>
-                        <table-column show="Ends" label="End Time"></table-column>
+                        <table-column label="Start Time">
+                            <template slot-scope="row">
+                                <tr>{{timestamp(row.Starts)}}</tr>
+                            </template>
+                        </table-column>
+                        <table-column label="End Time">
+                            <template slot-scope="row">
+                                <tr>{{timestamp(row.Ends)}}</tr>
+                            </template>
+                        </table-column>
                     </table-component>
 
             </div>
@@ -99,6 +118,8 @@
         name: "Scheduler",
         data(){
             return{
+                perPage: 1,
+                currentPage: 1,
                 title:'Add new worktime',
                 dataform:[], //Store to add new worktime of sale plane,date
                 schedulerdata:[],//Data get from sale database id, date, plane, starts, ends
@@ -110,14 +131,16 @@
             }
         },
         beforeCreate(){
-            if(this.$cookie.get('CurrentAccountID')===null || this.$cookie.get('CurrentAccountID')==='0'){
+            if(this.$cookie.get('CurrentAccountID')===null || this.$cookie.get('CurrentAccountType')<'2'){
                 this.$router.push('/login');
             }
         },
         methods:{
             logout(){
-            Logout();
+                Logout();
                 this.$router.push('/login');
+
+
             },
             timestamp(hours){
                 return moment.utc(hours*3600*1000).format('HH:mm')
@@ -130,17 +153,16 @@
                 return this.message="Added failed";
 
                 else{
-                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'),this.dataform.date,this.value[0],this.value[1],this.dataform.plane.id).then(data =>{
-                        console.log(data);
-                        if(data.result >0)
+                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'),this.dataform.date,this.value[0],this.value[1],this.dataform.plane.id).then(response =>{
+                        console.log(response);
+                        if(response.data.result > 0)
                         {
                             this.message="You added success!";
-                            this.success=data.result;
+                            this.success=response.data.result;
                         }
                         else{
                             this.message="Added failed";
-                            this.success=data.result;
-
+                            this.success=response.data.result;
                         }
                     })
                 }
@@ -164,7 +186,11 @@
                     return {...item,...obj};
                 })
 
+            },
+            rows() {
+                return this.BookingList.length
             }
+
 
         },
         created() {
