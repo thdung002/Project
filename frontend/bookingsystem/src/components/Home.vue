@@ -28,18 +28,15 @@
                                 <!-- row -->
                                 <div class="row">
                                     <!-- Column 1 -->
-                                    <div class="col-md-4 col-sm-6" v-for="(planes,index) in planedata "
+                                    <div class="col-md-4 col-sm-6" v-for="(planes,index) in MergeData "
                                          :key="index" >
                                         <!-- ARTICLE -->
                                         <article class="article widget-article" >
 
                                             <div class="article-body" >
-                                                <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)" v-for="(name,ind) in planename"
-                                                    :key="ind"
-                                                    v-show="planes.Id_plane === name.Id_plane"><a href="#">{{name.planename}}</a></h4>
+                                                <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)"><a href="#">{{planes.planename}}</a></h4>
                                                 <ul class="article-meta">
-                                                    <li v-for="(sale,i) in listsale" :key="i"
-                                                        v-show="sale.Id_sale === planes.Id_sale"><b>{{sale.Fullname}}</b></li>
+                                                    <li><b>{{planes.Fullname}}</b></li>
                                                     <li>
                                                         <i>Ngày làm việc: {{datestamp(planes.DateCreated)}}</i> </li>
                                                 </ul>
@@ -66,19 +63,18 @@
 </template>
 
 <script>
-    import _ from 'lodash';
     import moment from 'moment';
-    import {GetScheduler} from "../service/SchedulerService/SchedulerForUser";
-    import {PlaneForUser} from "../service/PlaneService/PlaneForUser";
-    import {GetListLogin} from "../service/UserService/Login";
+    import {GetScheduler} from "../service/UserServices/SchedulerForUser";
+    import {PlaneForUser} from "../service/UserServices/PlaneForUser";
+    import {GetListLogin} from "../service/SaleServices/Login";
 
     export default {
         name: "Home",
         data:function(){
             return{
-                planedata:{},
-                planename:{},
-                listsale:{},
+                planedata:[],
+                planename:[],
+                listsale:[],
             }
         },
         methods:{
@@ -97,16 +93,13 @@
 
         },
         computed:{
-            uniqPlane:function(){
-                return _.uniqBy(this.planedata,'plane')
+            MergeData(){
+                return this.planedata.map(item => {
+                    const obj = this.planename.find(o =>o.Id_plane === item.Id_plane);
+                    const obj2 = this.listsale.find(o=> o.Id_sale === item.Id_sale);
+                    return {...item,...obj,...obj2};
+                })
             },
-            uniqDate:function(){
-                return _.uniqBy(this.planedata,'date')
-            },
-            unionAll:function(){
-                return _.unionWith(this.planedata,this.uniqDate,_.isEqual);
-            }
-
         },
 
         created(){

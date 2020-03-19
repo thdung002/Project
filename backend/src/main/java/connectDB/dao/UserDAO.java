@@ -74,5 +74,32 @@ public class UserDAO {
             conn.close();
         }
     }
+    public List<users> GetAllUser() throws SQLException, ClassNotFoundException
+    {
+        Connection conn = getConnection();
+        try {
+
+            List<users> usrlist = new ArrayList<>();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("select * from users ");
+            while(rs.next()){
+                users usr=new users();
+                usr.setId_sale(Integer.parseInt(rs.getString("ID_Sale")));
+                usr.setFullname(rs.getString("Full_Name"));
+                usr.setUsername(rs.getString("Username"));
+                usr.setPassword(rs.getString("Password"));
+                usr.setAccountType(rs.getInt("AccountType"));
+                usrlist.add(usr);
+            }
+            return usrlist;
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return null;
+        }
+        finally{
+            conn.close();
+        }
+    }
 
 }

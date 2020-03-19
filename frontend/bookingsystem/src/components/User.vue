@@ -79,8 +79,8 @@
 <script>
     import moment from 'moment';
     import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue'
-    import {GetScheduler} from "../service/SchedulerService/SchedulerForUser";
-    import {AddBooking} from "../service/UserService/BookingForUser";
+    import {GetScheduler} from "../service/UserServices/SchedulerForUser";
+    import {AddBooking} from "../service/UserServices/BookingForUser";
 
     export default {
         name: "User",

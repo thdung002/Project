@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import {Login} from "../service/UserService/Login";
+    import {Login} from "../service/SaleServices/Login";
 
     export default {
         name: "Login",
@@ -49,8 +49,14 @@
             login(){
                 new Login(this.formdata.username,this.formdata.password).then(respone =>{
                     if(respone.data.Id_sale>0){
-                        alert("Log in successful");
-                        this.$router.push('/scheduler');
+                        if(this.$cookie.get('CurrentAccountType')>0){
+                            alert("Log in successful");
+                            this.$router.push('/scheduler');
+                        }
+                        else{
+                            alert("Log in successful");
+                            this.$router.push('/admin');
+                        }
                     }
                     else{
                         alert("Login faile");

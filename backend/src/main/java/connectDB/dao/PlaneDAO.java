@@ -27,12 +27,16 @@ public class PlaneDAO {
 
             List<plane> planelist = new ArrayList<>();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from plane where ID_Sale IS NOT NULL ");
+            ResultSet rs = statement.executeQuery("select * from plane ");
             while(rs.next()){
                 plane pl=new plane();
                 pl.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));
                 pl.setPlanename(rs.getString("Planename"));
-                pl.setId_sale(Integer.parseInt(rs.getString("ID_Sale")));
+                if(rs.getString("ID_Sale") == null ){
+                    pl.setId_sale(0);
+                }
+                else{
+                    pl.setId_sale(Integer.parseInt(rs.getString("ID_Sale")));}
                 planelist.add(pl);
             }
             return planelist;

@@ -10,14 +10,19 @@ public class JettyMain {
 public static void main(String[] args) throws Exception{
     Server server = new Server(8000);
     ServletContextHandler handler = new ServletContextHandler(server,"/");
-    handler.addServlet(PlaneForUser.class,"/plane");
-    handler.addServlet(Planing.class,"/admin/plane");
-    handler.addServlet(Scheduler.class,"/sale");
-    handler.addServlet(User.class,"/login");
-    handler.addServlet(Booking.class,"/admin/booking");
-    handler.addServlet(AddBooking.class,"/booking/add");
-    handler.addServlet(SchedulerByID.class,"/admin/sale");
-    handler.addServlet(Logout.class,"/logout");
+    handler.addServlet(UserGetPlane.class,"/user/plane");
+    handler.addServlet(SaleGetPlane.class,"/sale/plane");
+    handler.addServlet(UserGetAllScheduler.class,"/user/scheduler");
+    handler.addServlet(UserLogin.class,"/login");
+    handler.addServlet(SaleGetBookingByID.class,"/sale/booking");
+    handler.addServlet(UserAddBooking.class,"/user/booking/add");
+    handler.addServlet(SaleGetSchedulerByID.class,"/sale/scheduler");
+    handler.addServlet(UserLogout.class,"/logout");
+
+    handler.addServlet(AdminBooking.class,"/admin/booking");
+    handler.addServlet(AdminPlane.class,"/admin/plane");
+    handler.addServlet(AdminUsers.class,"/admin/users");
+
     //specify session ID manager
     HashSessionIdManager idmanager = new HashSessionIdManager();
     server.setSessionIdManager(idmanager);

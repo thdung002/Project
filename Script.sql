@@ -35,8 +35,8 @@ CREATE TABLE Scheduler (
     ID_Sale int NOT NULL,
     ID_Plane int NOT NULL,
     DateCreated varchar(255) NOT NULL,
-    Starts varchar(255) NOT NULL,
-    Ends varchar(255) NOT NULL,
+    Starts float NOT NULL,
+    Ends float NOT NULL,
     PRIMARY KEY (ID_Booking),
     FOREIGN KEY (ID_Sale) REFERENCES users(ID_Sale),
     FOREIGN KEY (ID_Plane) REFERENCES plane(ID_Plane)

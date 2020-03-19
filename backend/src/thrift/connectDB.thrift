@@ -38,7 +38,7 @@ struct booking{
     4: string Phone,
     5: string Datebooking,
     6: i32 Id_plane,
-    7: string Timebooking,
+    7: double Timebooking,
     8: i32 Id_sale
 }
 
@@ -63,4 +63,7 @@ service connectDBService{
     i32 UpdatePlane(1:i32 id_plane, 2:i32 id_sale),
     i32 InsertOrUpdateScheduler(1:scheduler schedul),
     list<users> GetListSale(),
+    list<users> GetAllUser(),
+    list<plane> GetAllPlane(),
+
 }

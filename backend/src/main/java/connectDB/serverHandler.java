@@ -171,4 +171,14 @@ public class serverHandler implements connectDBService.Iface{
         return usern.GetListSale();
     }
 
+    @Override
+    public List<users> GetAllUser() throws TException, SQLException, ClassNotFoundException {
+        return usern.GetAllUser();
+    }
+
+    @Override
+    public List<plane> GetAllPlane() throws TException, SQLException, ClassNotFoundException {
+        return pl.GetPlane();
+    }
+
 }

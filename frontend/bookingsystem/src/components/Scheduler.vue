@@ -49,24 +49,26 @@
 
                 </form>
                 <h2>NOTE user</h2>
-                <table-component :data="userdata"
+                <table-component :data="BookingList"
                                  sort-by="date"
-                                 sort-order="asc">
-                    <table-column show="full_name" label="Full Name" :filterable="true"></table-column>
-                    <table-column show="email" label="Email"></table-column>
-                    <table-column show="phone" label="Phone number"></table-column>
-                    <table-column show="date" label="Date" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                    <table-column show="id_plane" label="ID Plane"></table-column>
-                    <table-column show="time" label="Time"></table-column>
+                                 sort-order="asc"
+                ref="table">
+                    <table-column show="Full_name" label="Full Name" :filterable="true"></table-column>
+                    <table-column show="Email" label="Email"></table-column>
+                    <table-column show="Phone" label="Phone number"></table-column>
+                    <table-column show="Datebooking" label="Date meeting" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
+                    <table-column show="planename" label="Location"></table-column>
+                    <table-column show="Timebooking" label="Time meeting"></table-column>
 
                 </table-component>
                 <br>
                 <h2>All your work time</h2>
-                    <table-component :data="saledata"
+                    <table-component :data="MergeSale"
                     sort-by="date"
-                    sort-order="asc">
+                    sort-order="asc"
+                    ref="table">
                         <table-column show="Id_sale" label="Sale ID"></table-column>
-                        <table-column show="Id_plane" label="Plane"></table-column>
+                        <table-column show="planename" label="Location"></table-column>
                         <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
                         <table-column show="Starts" label="Start Time"></table-column>
                         <table-column show="Ends" label="End Time"></table-column>
@@ -86,23 +88,22 @@
 
 <script>
 
-    import  * as Booking from '../service/UserService/BookingForSale';
-    import * as Plane from "../service/PlaneService/PlaneForSale";
-    import * as Scheduler from "../service/SchedulerService/SchedulerForSale";
-    import {Logout} from "../service/UserService/Logout";
+    import  * as Booking from '../service/SaleServices/BookingForSale';
+    import * as Plane from "../service/SaleServices/PlaneForSale";
+    import * as Scheduler from "../service/SaleServices/SchedulerForSale";
+    import {Logout} from "../service/SaleServices/Logout";
     import 'vue-range-component/dist/vue-range-slider.css'
     import VueRangeSlider from 'vue-range-component'
-
     import moment from 'moment';
     export default {
         name: "Scheduler",
         data(){
             return{
                 title:'Add new worktime',
-                dataform:{}, //Store to add new worktime of sale plane,date
-                saledata:{},//Data get from sale database id, date, plane, starts, ends
-                userdata:{},//Data get from booking in database_Note of user
-                planedata:{},//data from master database plane
+                dataform:[], //Store to add new worktime of sale plane,date
+                schedulerdata:[],//Data get from sale database id, date, plane, starts, ends
+                userdata:[],//Data get from booking in database_Note of user
+                planedata:[],//data from master database plane
                 message:"",
                 value:[0,24],
                 success:"",
@@ -148,6 +149,24 @@
         components: {
             VueRangeSlider
         },
+        computed:{
+            MergeSale(){
+                // return this.saledata.map((item,i)=> Object.assign({},item, this.planedata[i]));
+                return this.schedulerdata.map(item => {
+                    const obj = this.planedata.find(o =>o.Id_plane === item.Id_plane);
+                    return {...item,...obj};
+                })
+            },
+            BookingList(){
+                // return this.userdata.map((item,i)=> Object.assign({},item,this.planedata[i]));
+                return this.userdata.map(item => {
+                    const obj = this.planedata.find(o =>o.Id_plane === item.Id_plane);
+                    return {...item,...obj};
+                })
+
+            }
+
+        },
         created() {
             this.min = 0;
             this.max = 24;
@@ -155,9 +174,9 @@
             this.minrange=2;
             this.enableCross = false;
 
-            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(data =>{
-                console.log(data);
-                this.saledata=data;
+            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response =>{
+                console.log(response.data);
+                this.schedulerdata=response.data;
             });
             new Booking.GetListBookingByID(this.$cookie.get('CurrentAccountID')).then(respone => {
                 console.log(respone.data);
