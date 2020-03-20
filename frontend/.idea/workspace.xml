@@ -6,15 +6,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/assets/css/style2.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/SaleServices/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/service/SaleServices/Logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/service/SaleServices/BookingForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/service/SaleServices/BookingForSale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogout.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogout.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogout.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -61,14 +66,16 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\REVER\Project\frontend\bookingsystem\node_modules\vue-range-component" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\REVER\Project\frontend\bookingsystem\src\service\SaleServices" />
       <recent name="E:\REVER\Project\frontend\bookingsystem\src\service\UserServices" />
       <recent name="E:\REVER\Project\frontend\bookingsystem\src\service\AdminServices" />
       <recent name="E:\REVER\Project\frontend\bookingsystem\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\REVER\Project\frontend\bookingsystem\node_modules\vue-range-component" />
+      <recent name="E:\REVER\Project\frontend\bookingsystem\node_modules\vue-range-slider" />
+      <recent name="E:\REVER\Project\frontend\bookingsystem\src\assets\login" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -83,7 +90,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.serve">
+    <configuration name="Pagination.vue" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/frontend/bookingsystem/src/components/Pagination.vue" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/bookingsystem/package.json" />
       <command value="run" />
@@ -97,6 +107,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.serve" />
+        <item itemvalue="JavaScript Debug.Pagination.vue" />
       </list>
     </recent_temporary>
   </component>
@@ -124,7 +135,9 @@
       <workItem from="1584409959095" duration="11719000" />
       <workItem from="1584496713005" duration="24195000" />
       <workItem from="1584542630942" duration="5000" />
-      <workItem from="1584583703820" duration="16053000" />
+      <workItem from="1584583703820" duration="20785000" />
+      <workItem from="1584672816847" duration="15953000" />
+      <workItem from="1584708138128" duration="5776000" />
     </task>
     <task id="LOCAL-00001" summary="Edit js file with axios - with error">
       <created>1584503165725</created>

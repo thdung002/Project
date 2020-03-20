@@ -33,8 +33,8 @@ public class UserLogout extends HttpServlet {
                 session.invalidate();
                 System.out.println("You are logged out");
             }
-            Cookie user = new Cookie("CurrentAccountID", null);
-            Cookie type = new Cookie("CurrentAccountType", null);
+            Cookie user = new Cookie("CurrentAccountID", "0");
+            Cookie type = new Cookie("CurrentAccountType", "0");
             user.setMaxAge(0);
             type.setMaxAge(0);
             resp.addCookie(type);

@@ -1,17 +1,31 @@
 <template>
     <div>
-        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
-            <div style='float: right' class = "form-header">
-                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== '0'">
-                    Login
-                </button>
-                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') !== '0'">
-                    Account Page
-                </button>
+<!--        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">-->
+<!--            <div style='float: right' class = "form-header">-->
 
+<!--                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== null || this.$cookie.get('CurrentAccountID')==='0'">-->
+<!--                    Login-->
+<!--                </button>-->
+<!--                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') >= '1'">-->
+<!--                    Account Page-->
+<!--                </button>-->
+
+<!--            </div>-->
+<!--        </nav>-->
+        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                            <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== null || this.$cookie.get('CurrentAccountID')==='0'">
+                                Login
+                            </button>
+                            <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') >= '1'">
+                                Account Page
+                            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbar">
             </div>
         </nav>
-
         <div   class="section">
             <!-- CONTAINER -->
             <div class="container">
@@ -134,7 +148,7 @@
 </script>
 
 <style scoped>
-    @import '../assets/css/style2.css';
-    @import '../assets/css/bootstrap.min.css';
+    @import '../assets/css/style.css';
+    @import '../assets/login/vendor/bootstrap/css/bootstrap.min.css';
 
 </style>

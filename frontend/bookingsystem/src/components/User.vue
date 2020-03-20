@@ -1,20 +1,19 @@
 <template>
     <div id="booking" class="section">
         <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
-            <div style='float: right' class = "form-header">
-                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== null">
-                    Login
-                </button>
-                <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') !== null">
-                    Account Page
-                </button>
-            </div>
-            <div style='float: left' class = "form-header">
-                <button class="btn btn-default" @click="home">
-                    Home
-                </button>
-            </div>
 
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID')=== null || this.$cookie.get('CurrentAccountID')==='0'">
+                Login
+            </button>
+            <button class="btn btn-warning" @click="login" v-show="this.$cookie.get('CurrentAccountID') >= '1'">
+                Account Page
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbar">
+            </div>
         </nav>
 
         <div class="section-center">
@@ -41,30 +40,30 @@
                                         <span class="form-label">Email</span>
                                         <input class="form-control" v-model="dataform.email" type="email" placeholder="Enter your email">
                                     </div>
-                            <div class="form-group">
-                                <span class="form-label">Phone</span>
-                                <input class="form-control" v-model="dataform.phone" type="tel" placeholder="Enter your phone number">
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8">
                                     <div class="form-group">
-                                        <span class="form-label">Choose date</span>
-                                        <select v-model="dataform.dateUserChoose" class="form-control" >
-                                            <option
-                                                    v-for="(dates, index) in saledata"
-                                                    v-show="planelast === dates.Id_plane"
-                                                    :value="dates.DateCreated"
-                                                    :key="index">{{datestamp(dates.DateCreated)}}- Start from {{timestamp(dates.Starts)}} to  {{timestamp(dates.Ends)}}</option>
-                                        </select>
+                                        <span class="form-label">Phone</span>
+                                        <input class="form-control" v-model="dataform.phone" type="tel" placeholder="Enter your phone number">
                                     </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <span class="form-label">Time</span>
-                                        <vue-timepicker format="HH:mm" v-model="timeval"></vue-timepicker>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <span class="form-label">Choose date</span>
+                                                <select v-model="dataform.dateUserChoose" class="form-control" >
+                                                    <option
+                                                            v-for="(dates, index) in saledata"
+                                                            v-show="planelast === dates.Id_plane"
+                                                            :value="dates.DateCreated"
+                                                            :key="index">{{datestamp(dates.DateCreated)}}- Start from {{timestamp(dates.Starts)}} to  {{timestamp(dates.Ends)}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <span class="form-label">Time</span>
+                                                <vue-timepicker format="HH:mm" v-model="timeval"></vue-timepicker>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
                             <div class="form-btn">
                                 <button class="submit-btn" type="submit">Book Now</button>
@@ -173,7 +172,6 @@
 </script>
 
 <style scoped>
-    @import '../assets/css/style.css';
-    @import '../assets/css/bootstrap.min.css';
+    @import '../assets/login/vendor/bootstrap/css/bootstrap.min.css';
 
 </style>

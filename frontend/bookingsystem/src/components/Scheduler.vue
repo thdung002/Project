@@ -7,6 +7,7 @@
                         <button class="btn btn-default" @click="logout">
                             Logout
                         </button>
+
             <div class="collapse navbar-collapse justify-content-between" id="navbar">
             </div>
         </nav>
@@ -17,10 +18,10 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <form action="" method="post" @submit.prevent="add">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" >{{title}}</div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" ><h2>{{title}}</h2></div>
                         <div class="panel-body">
-                            <div class="form-group">
+                            <div class="form-group-lg">
                                 <label>Choose date</label>
                                 <input v-model="dataform.date" class="form-control" type="date">
                             </div>
@@ -30,12 +31,11 @@
                                     <option v-for="(plane,index) in planedata" :key="index"  :value="{id: plane.Id_plane, text: plane.planename}">{{plane.planename}}</option>
                                 </select>
                             </div>
+                            <br>
                             <div class="form-group">
                                 <label>Your worktime</label>
-                                <div class="form-group">
-                                    <vue-range-slider ref="slider" v-model="value" :min="min" :max="max"  :enable-cross="enableCross"
+                                <vue-range-slider ref="slider" v-model="value" :min="min" :max="max"  :enable-cross="enableCross"
                                                       :step="step" :min-range="minrange"></vue-range-slider>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-danger">Add</button>
@@ -51,7 +51,7 @@
                 <h2>NOTE user</h2>
 
 
-                <table-component :data="BookingList"
+                <table-component :data="bookingdata"
                                  sort-by="date"
                                  sort-order="asc"
                                  ref="table"
@@ -64,13 +64,11 @@
                     <table-column show="Datebooking" label="Date meeting" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
                     <table-column show="planename" label="Location"></table-column>
                     <table-column show="Timebooking" label="Time meting" :sortable="false" :filterable="false">
-<!--                        <template slot-scope="row">-->
-<!--                            <a :href="`#${row.Email}`">Edit</a>-->
-<!--                        </template>-->
                     </table-column>
-
-
                 </table-component>
+
+
+
                 <br>
                 <h2>All your work time</h2>
                     <table-component :data="MergeSale"
@@ -106,7 +104,6 @@
 </template>
 
 <script>
-
     import  * as Booking from '../service/SaleServices/BookingForSale';
     import * as Plane from "../service/SaleServices/PlaneForSale";
     import * as Scheduler from "../service/SaleServices/SchedulerForSale";
@@ -118,8 +115,6 @@
         name: "Scheduler",
         data(){
             return{
-                perPage: 1,
-                currentPage: 1,
                 title:'Add new worktime',
                 dataform:[], //Store to add new worktime of sale plane,date
                 schedulerdata:[],//Data get from sale database id, date, plane, starts, ends
@@ -128,6 +123,7 @@
                 message:"",
                 value:[0,24],
                 success:"",
+
             }
         },
         beforeCreate(){
@@ -136,11 +132,20 @@
             }
         },
         methods:{
+            bookingdata(){
+                return{
+                    data: this.BookingList,
+                    pagination:{
+                    totalPages: 10,
+                    currentPage: 1,
+                }
+
+            }
+
+            },
             logout(){
                 Logout();
                 this.$router.push('/login');
-
-
             },
             timestamp(hours){
                 return moment.utc(hours*3600*1000).format('HH:mm')
@@ -187,9 +192,6 @@
                 })
 
             },
-            rows() {
-                return this.BookingList.length
-            }
 
 
         },
@@ -219,6 +221,7 @@
 </script>
 <style scoped>
     @import '../assets/css/table-component.css';
+    @import '../assets/css/bootstrap.min.css';
 </style>
 
 

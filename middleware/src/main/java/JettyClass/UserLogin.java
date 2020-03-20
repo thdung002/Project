@@ -56,6 +56,7 @@ public class UserLogin extends HttpServlet{
             resp.setContentType("application/json;charset=UTF-8");
             //old session invalidate
             HttpSession session = req.getSession();
+
 //            if(session!=null){session.invalidate();}
 //            //new session created
 //            req.getSession(true);
@@ -73,15 +74,19 @@ public class UserLogin extends HttpServlet{
                 Cookie type = new Cookie("CurrentAccountType",String.valueOf(lstuser.getAccountType()));
                 resp.addCookie(user);
                 resp.addCookie(type);
+                System.out.println(session.getId());
+
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();
                 JsonObject arr = gson.toJsonTree(lstuser).getAsJsonObject();
                 out.print(arr.toString());
+
             }
             else{
                 resp.setStatus(404);
                 req.setAttribute("error", "Unknown user, please try again");
             }
+
             transport.close();
 
         } catch (TTransportException e) {
