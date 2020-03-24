@@ -1,7 +1,7 @@
 import axios from '../http'
 
-export  function Logout(){
-    return  axios.post('/logout').catch(e=> {
+export async function Logout(){
+    return await axios.post('/logout').catch(e=> {
         console.log(e);
     });
 

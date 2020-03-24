@@ -16,70 +16,60 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <h2>Booking List</h2>
-                        <table-component :data="BookingList"
-                                         sort-by="date"
-                                         sort-order="asc"
-                                         ref="table"
-                                         filter-no-results="Not match anything">
 
-                            <table-column show="Full_name" label="Full Name" :filterable="true"></table-column>
-                            <table-column show="Email" label="Email"></table-column>
-                            <table-column show="Phone" label="Phone number"></table-column>
-                            <table-column show="Datebooking" label="Date meeting" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                            <table-column show="planename" label="Location" :filterable="true"></table-column>
-                            <table-column show="Timebooking" label="Time meeting"></table-column>
+                        <vue-bootstrap-table
+                                :columns="colBooking"
+                                :values="BookingList"
+                                :show-filter="true"
+                                :sortable="true"
+                                :paginated="true"
+                                :multi-column-sortable=true
+                                :filter-case-sensitive=false
+                                :selectable=false
+                                :pageSize="5"
+                        ></vue-bootstrap-table>
 
-                        </table-component>
                         <br>
                         <h2>Scheduler</h2>
-                        <table-component :data="SchedulerMerge"
-                                         sort-by="date"
-                                         sort-order="asc"
-                                         ref="table"
-                                         filter-no-results="Not match anything">
-
-                            <table-column show="Fullname" label="Sale name"></table-column>
-                            <table-column show="planename" label="Location"></table-column>
-                            <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                            <table-column label="Start Time">
-                                <template slot-scope="row">
-                                    <tr>{{timestamp(row.Starts)}}</tr>
-                                </template>
-                            </table-column>
-                            <table-column label="End Time">
-                                <template slot-scope="row">
-                                    <tr>{{timestamp(row.Ends)}}</tr>
-                                </template>
-                            </table-column>
-                        </table-component>
+                        <vue-bootstrap-table
+                                :columns="colScheduler"
+                                :values="SchedulerMerge"
+                                :show-filter="true"
+                                :sortable="true"
+                                :paginated="true"
+                                :multi-column-sortable=true
+                                :filter-case-sensitive=false
+                                :selectable=false
+                                :pageSize="5"
+                        ></vue-bootstrap-table>
 
                         <br>
                         <h2>Plane</h2>
-                        <table-component :data="PlaneList"
-                                         sort-by="date"
-                                         sort-order="asc"
-                                         ref="table"
-                                         filter-no-results="Not match anything">
-
-                            <table-column show="Id_plane" label="Plane ID"></table-column>
-                            <table-column show="planename" label="Location"></table-column>
-                            <table-column show="Fullname" label="Sale name" :filterable="true" :sortable="true" ></table-column>
-                        </table-component>
+                        <vue-bootstrap-table
+                                :columns="colPlane"
+                                :values="PlaneList"
+                                :show-filter="true"
+                                :sortable="true"
+                                :paginated="true"
+                                :multi-column-sortable=true
+                                :filter-case-sensitive=false
+                                :selectable=false
+                                :pageSize="5"
+                        ></vue-bootstrap-table>
 
                         <br>
                         <h2>Users</h2>
-                        <table-component :data="userdata"
-                                         sort-by="date"
-                                         sort-order="asc"
-                                         ref="table"
-                                         filter-no-results="Not match anything">
-
-                            <table-column show="Id_sale" label="Sale ID"></table-column>
-                            <table-column show="Fullname" label="Full name" :filterable="true" :sortable="true"></table-column>
-                            <table-column show="username" label="Username"></table-column>
-<!--                            <table-column show="password" label="Password"></table-column>-->
-                            <table-column show="AccountType" label="Account Type"></table-column>
-                        </table-component>
+                        <vue-bootstrap-table
+                                :columns="colUsers"
+                                :values="userdata"
+                                :show-filter="true"
+                                :sortable="true"
+                                :paginated="true"
+                                :multi-column-sortable=true
+                                :filter-case-sensitive=false
+                                :selectable=false
+                                :pageSize="5"
+                        ></vue-bootstrap-table>
 
 
                     </div>
@@ -99,6 +89,8 @@
     import {GetAllPlane} from "../service/AdminServices/PlaneForAdmin";
     import {GetScheduler} from "../service/UserServices/SchedulerForUser";
     import moment from 'moment';
+    import VueBootstrapTable from "vue2-bootstrap-table2";
+
     export default {
         name: "Admin",
         data(){
@@ -107,6 +99,159 @@
                 userdata:[],
                 planedata:[],
                 schedulerdata:[],
+                colScheduler:[
+                    {
+                        name: 'Id_sale',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+
+                    {
+                        name: 'planename',
+                        title: "Location",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'DateCreated',
+                        title: "Date Created",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Starts',
+                        title: "Start Time",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Ends',
+                        title: "End Time",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    }
+                ],
+                colBooking:[
+                    {
+                        name: 'Id_booking',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'Full_name',
+                        title: "Full Name",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'Phone',
+                        title: "Phone",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Email',
+                        title: "Email",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Datebooking',
+                        title: "Date Booking",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Timebooking',
+                        title: "Time Booking",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'planename',
+                        title: "Location",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    }
+                ],
+                colPlane:[
+                    {
+                        name: 'Id_plane',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'planename',
+                        title: "Location",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: "Fullname",
+                        title: "Sale",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    }
+                ],
+                colUsers:[
+                    {
+                        name: 'Id_sale',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'Fullname',
+                        title: "Full Name",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'username',
+                        title: "Username",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'AccountType',
+                        title: "Type(1 is admin, others is sale)",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    }
+                ],
+
             }
         },
         methods:{
@@ -127,7 +272,7 @@
 
         created(){
             new GetAllAccounts().then(response =>{
-                console.log(response.data);
+                // console.log(response.data);
                 this.userdata=response.data;
             });
             new GetAllBooking().then(response =>{
@@ -135,11 +280,11 @@
                 this.bookingdata=response.data;
             });
             new GetAllPlane().then(response =>{
-                console.log(response.data);
+                // console.log(response.data);
                 this.planedata=response.data;
             });
             new GetScheduler().then(response =>{
-                console.log(response.data);
+                // console.log(response.data);
                 this.schedulerdata=response.data;
             });
         },
@@ -167,10 +312,14 @@
             }
 
         },
+        components:{
+            VueBootstrapTable: VueBootstrapTable
+        }
 
     }
 </script>
 
 <style scoped>
+    @import '../assets/css/bootstrap.min.css';
 
 </style>

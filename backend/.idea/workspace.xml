@@ -7,20 +7,15 @@
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/style2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Pagination.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/BookingForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/BookingForSale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/Logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogout.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogout.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogout.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,6 +142,11 @@
       <workItem from="1584583782510" duration="4390000" />
       <workItem from="1584672793019" duration="1336000" />
       <workItem from="1584708054372" duration="1283000" />
+      <workItem from="1584846293939" duration="2048000" />
+      <workItem from="1584926402822" duration="5083000" />
+      <workItem from="1584967016196" duration="21000" />
+      <workItem from="1584969249204" duration="604000" />
+      <workItem from="1585013337727" duration="650000" />
     </task>
     <servers />
   </component>

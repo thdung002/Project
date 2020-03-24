@@ -51,46 +51,33 @@
                 <h2>NOTE user</h2>
 
 
-                <table-component :data="bookingdata"
-                                 sort-by="date"
-                                 sort-order="asc"
-                                 ref="table"
-                                 id="booking-table"
-                                 filter-no-results="Not match anything"
-                                 >
-                    <table-column show="Full_name" label="Full Name" :filterable="true"></table-column>
-                    <table-column show="Email" label="Email"></table-column>
-                    <table-column show="Phone" label="Phone number"></table-column>
-                    <table-column show="Datebooking" label="Date meeting" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                    <table-column show="planename" label="Location"></table-column>
-                    <table-column show="Timebooking" label="Time meting" :sortable="false" :filterable="false">
-                    </table-column>
-                </table-component>
+                <vue-bootstrap-table
+                        :columns="columnsBooking"
+                        :values="BookingList"
+                        :show-filter="true"
+                        :sortable="true"
+                        :paginated="true"
+                        :multi-column-sortable=true
+                        :filter-case-sensitive=false
+                        :selectable=false
+                        :pageSize="5"
+                ></vue-bootstrap-table>
 
 
 
                 <br>
                 <h2>All your work time</h2>
-                    <table-component :data="MergeSale"
-                    sort-by="date"
-                    sort-order="asc"
-                    ref="table"
-                    filter-no-results="Not match anything">
-                        <table-column show="Id_sale" label="Sale ID"></table-column>
-                        <table-column show="planename" label="Location"></table-column>
-                        <table-column show="DateCreated" label="DateCreated" :filterable="true" :sortable="true" data-type="date:YYYY-MM-DD"></table-column>
-                        <table-column label="Start Time">
-                            <template slot-scope="row">
-                                <tr>{{timestamp(row.Starts)}}</tr>
-                            </template>
-                        </table-column>
-                        <table-column label="End Time">
-                            <template slot-scope="row">
-                                <tr>{{timestamp(row.Ends)}}</tr>
-                            </template>
-                        </table-column>
-                    </table-component>
-
+                <vue-bootstrap-table
+                        :columns="columnScheduler"
+                        :values="MergeSale"
+                        :show-filter="true"
+                        :sortable="true"
+                        :paginated="true"
+                        :multi-column-sortable=true
+                        :filter-case-sensitive=false
+                        :selectable=false
+                        :pageSize="5"
+                ></vue-bootstrap-table>
             </div>
 
         </div>
@@ -111,117 +98,204 @@
     import 'vue-range-component/dist/vue-range-slider.css'
     import VueRangeSlider from 'vue-range-component'
     import moment from 'moment';
+    import VueBootstrapTable from "vue2-bootstrap-table2";
+
     export default {
         name: "Scheduler",
-        data(){
-            return{
-                title:'Add new worktime',
-                dataform:[], //Store to add new worktime of sale plane,date
-                schedulerdata:[],//Data get from sale database id, date, plane, starts, ends
-                userdata:[],//Data get from booking in database_Note of user
-                planedata:[],//data from master database plane
-                message:"",
-                value:[0,24],
-                success:"",
+        data() {
+            return {
+                title: 'Add new worktime',
+                dataform: [], //Store to add new worktime of sale plane,date
+                schedulerdata: [],//Data get from sale database id, date, plane, starts, ends
+                userdata: [],//Data get from booking in database_Note of user
+                planedata: [],//data from master database plane
+                message: "",
+                value: [0, 24],
+                success: "",
+                columnsBooking: [
+                    {
+                        name: 'Id_booking',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                            name: 'Full_name',
+                            title: "Full Name",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+                        },
+                        {
+                            name: 'Phone',
+                            title: "Phone",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+
+                        },
+                        {
+                            name: 'Email',
+                            title: "Email",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+
+                        },
+                        {
+                            name: 'Datebooking',
+                            title: "Date Booking",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+
+                        },
+                        {
+                            name: 'Timebooking',
+                            title: "Time Booking",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+
+                        },
+                        {
+                            name: 'planename',
+                            title: "Location",
+                            visible:true,
+                            sortable: true,
+                            filterable:true,
+                        }
+                    ],
+                columnScheduler: [
+                    {
+                        name: 'Id_sale',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+
+                    {
+                        name: 'planename',
+                        title: "Location",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+                    {
+                        name: 'DateCreated',
+                        title: "Date Created",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Starts',
+                        title: "Start Time",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    },
+                    {
+                        name: 'Ends',
+                        title: "End Time",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+
+                    }
+                ],
 
             }
         },
-        beforeCreate(){
-            if(this.$cookie.get('CurrentAccountID')===null || this.$cookie.get('CurrentAccountType')<'2'){
+        beforeCreate() {
+            if (this.$cookie.get('CurrentAccountID') === null || this.$cookie.get('CurrentAccountType') < '2') {
                 this.$router.push('/login');
             }
         },
-        methods:{
-            bookingdata(){
-                return{
-                    data: this.BookingList,
-                    pagination:{
-                    totalPages: 10,
-                    currentPage: 1,
-                }
 
-            }
-
-            },
-            logout(){
+        methods: {
+            logout() {
                 Logout();
                 this.$router.push('/login');
             },
-            timestamp(hours){
-                return moment.utc(hours*3600*1000).format('HH:mm')
+            timestamp(hours) {
+                return moment.utc(hours * 3600 * 1000).format('HH:mm')
             },
-            datestamp(date){
+            datestamp(date) {
                 return moment(date).format("DD/MM/YYYY");
             },
-            add(){
-                if(this.dataform.plane.text===undefined)
-                return this.message="Added failed";
+            add() {
+                if (this.dataform.plane.text === undefined)
+                    return this.message = "Added failed";
 
-                else{
-                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'),this.dataform.date,this.value[0],this.value[1],this.dataform.plane.id).then(response =>{
-                        console.log(response);
-                        if(response.data.result > 0)
-                        {
-                            this.message="You added success!";
-                            this.success=response.data.result;
-                        }
-                        else{
-                            this.message="Added failed";
-                            this.success=response.data.result;
+                else {
+                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'), this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
+                        // console.log(response);
+                        if (response.data.result > 0) {
+                            this.message = "You added success!";
+                            this.success = response.data.result;
+                        } else {
+                            this.message = "Added failed";
+                            this.success = response.data.result;
                         }
                     })
                 }
             },
         },
         components: {
-            VueRangeSlider
+            VueRangeSlider,
+            VueBootstrapTable: VueBootstrapTable,
         },
-        computed:{
-            MergeSale(){
+        computed: {
+            MergeSale() {
                 // return this.saledata.map((item,i)=> Object.assign({},item, this.planedata[i]));
                 return this.schedulerdata.map(item => {
-                    const obj = this.planedata.find(o =>o.Id_plane === item.Id_plane);
-                    return {...item,...obj};
+                    const obj = this.planedata.find(o => o.Id_plane === item.Id_plane);
+                    return {...item, ...obj};
                 })
             },
-            BookingList(){
+            BookingList() {
                 // return this.userdata.map((item,i)=> Object.assign({},item,this.planedata[i]));
                 return this.userdata.map(item => {
-                    const obj = this.planedata.find(o =>o.Id_plane === item.Id_plane);
-                    return {...item,...obj};
+                    const obj = this.planedata.find(o => o.Id_plane === item.Id_plane);
+                    return {...item, ...obj};
                 })
 
             },
-
-
         },
-        created() {
-            this.min = 0;
-            this.max = 24;
-            this.step=0.5;
-            this.minrange=2;
-            this.enableCross = false;
 
-            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response =>{
-                console.log(response.data);
-                this.schedulerdata=response.data;
-            });
-            new Booking.GetListBookingByID(this.$cookie.get('CurrentAccountID')).then(respone => {
-                console.log(respone.data);
-                this.userdata = respone.data;
-            });
-            new Plane.PlaneForSale(this.$cookie.get('CurrentAccountID')).then(respone => {
-                console.log(respone.data);
-                this.planedata=respone.data;
-            });
+            created() {
+                this.min = 0;
+                this.max = 24;
+                this.step = 0.5;
+                this.minrange = 2;
+                this.enableCross = false;
 
-        }
+                new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response => {
+                    // console.log(response.data);
+                    this.schedulerdata = response.data;
+                });
+                new Booking.GetListBookingByID(this.$cookie.get('CurrentAccountID')).then(respone => {
+                    // console.log(respone.data);
+                    this.userdata = respone.data;
+                });
+                new Plane.PlaneForSale(this.$cookie.get('CurrentAccountID')).then(respone => {
+                    // console.log(respone.data);
+                    this.planedata = respone.data;
+                });
+
+
+            }
+
 
     }
 </script>
 <style scoped>
-    @import '../assets/css/table-component.css';
-    @import '../assets/css/bootstrap.min.css';
+        @import '../assets/css/bootstrap.min.css';
 </style>
 
 

@@ -24,7 +24,6 @@ public class UserLogin extends HttpServlet{
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
-            HttpSession session=req.getSession(false);
 
             TTransport transport; //1
             transport = new TSocket("localhost", 9090); //2
@@ -70,6 +69,7 @@ public class UserLogin extends HttpServlet{
             if(lstuser != null){
                 session.setAttribute("CurrentAccountID",lstuser.getId_sale());
                 session.setAttribute("CurrentAccountType",lstuser.getAccountType());
+                session.setMaxInactiveInterval(1800);
                 Cookie user = new Cookie("CurrentAccountID",String.valueOf(lstuser.getId_sale()));
                 Cookie type = new Cookie("CurrentAccountType",String.valueOf(lstuser.getAccountType()));
                 resp.addCookie(user);

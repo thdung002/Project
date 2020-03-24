@@ -129,17 +129,15 @@
         created(){
 
              new GetScheduler().then(response=>{
-                console.log(response.data);
+                // console.log(response.data);
                 this.planedata = response.data;
             });
             new GetListLogin().then(respone=>{
-                console.log(respone.data);
+                // console.log(respone.data);
                 this.listsale = respone.data;
             });
-
-
             new PlaneForUser(this.$cookie.get('CurrentAccountID')).then(respone=>{
-                console.log(respone.data);
+                // console.log(respone.data);
                 this.planename = respone.data;
             });
         },

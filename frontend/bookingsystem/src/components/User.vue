@@ -142,14 +142,14 @@
                 if(!this.dataform.phone) this.errors.push("Phone required");
                 if(!this.dataform.dateUserChoose) this.errors.push("Date required");
                 if(!this.timeval) this.errors.push("Time required");
-                console.log(this.checkingTime());
+                // console.log(this.checkingTime());
                 if(this.checkingTime()===0)
                 {
                     this.errors.push("Time is not in range!")
                 }
                 if(!this.errors.length) {
                     new AddBooking(this.dataform.name,this.dataform.email,this.dataform.phone,this.dataform.dateUserChoose,this.$store.state.id_plane,this.timeval,this.$store.state.sale_id).then((respone)=>{
-                        console.log(respone.data);
+                        // console.log(respone.data);
                         if(respone.data.result>0){
                             this.message="You added success!";
                             this.success=respone.data.result;
@@ -163,7 +163,7 @@
         },
         created() {
             new GetScheduler().then(respone =>{
-                console.log(respone.data);
+                // console.log(respone.data);
                 this.saledata=respone.data;
             })
         },
