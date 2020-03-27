@@ -38,7 +38,7 @@ struct booking{
     4: string Phone,
     5: string Datebooking,
     6: i32 Id_plane,
-    7: double Timebooking,
+    7: string Timebooking,
     8: i32 Id_sale
 }
 

@@ -26,7 +26,7 @@ CREATE TABLE Users (
     Full_Name varchar(255) NOT NULL,
     Username varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
-    AccountType tinyint(4) DEFAULT '1',
+    AccountType tinyint(4) DEFAULT '2',
     PRIMARY KEY (ID_Sale)
 );
 

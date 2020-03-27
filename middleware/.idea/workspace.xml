@@ -2,20 +2,156 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33161c82-93cc-4496-a73c-cd3a3a4aa3ee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Script.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/connectDB/dao/PlaneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/connectDB/dao/PlaneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/thrift/connectDB.thrift" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/thrift/connectDB.thrift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/classes/connectDB/dao/PlaneDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/target/classes/connectDB/dao/PlaneDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/css/table-component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/img/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/img/background2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/img/img-widget-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/css/util.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/JosefinSans-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/JosefinSans/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/Linearicons-Free-v1.0.0/WebFont/Linearicons-Free.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/Linearicons-Free-v1.0.0/WebFont/Linearicons-Free.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-Regular.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/HELP-US-OUT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/animated.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/bordered-pulled.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/core.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/fixed-width.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/font-awesome.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/icons.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/larger.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/list.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/path.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/rotated-flipped.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/screen-reader.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/stacked.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/less/variables.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_animated.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_bordered-pulled.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_fixed-width.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_larger.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_path.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_rotated-flipped.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_stacked.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/font-awesome-4.7.0/scss/font-awesome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/fonts/oswald/Oswald-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/images/bg-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/images/icons/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/images/icons/map-marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/images/img-01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/js/map-custom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/animate/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/animsition/css/animsition.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/animsition/css/animsition.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/animsition/js/animsition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/animsition/js/animsition.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/js/popper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/js/popper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/bootstrap/js/tooltip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/countdowntime/countdowntime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/css-hamburgers/hamburgers.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/css-hamburgers/hamburgers.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/daterangepicker/daterangepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/daterangepicker/daterangepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/daterangepicker/moment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/daterangepicker/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/jquery/jquery-3.2.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/perfect-scrollbar/perfect-scrollbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/perfect-scrollbar/perfect-scrollbar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/select2/select2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/select2/select2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/select2/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/assets/login/vendor/select2/select2.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Pagination.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/BookingForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/BookingForSale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/Logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/UserLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/UserLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/UserLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/AdminBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/AdminBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/AdminPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/AdminPlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/AdminUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/AdminUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetBookingByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetBookingByID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetPlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetSchedulerByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/SaleGetSchedulerByID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/UserGetAllScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/UserGetAllScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JettyClass/UserGetPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JettyClass/UserGetPlane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/thirft/connectDB.thrift" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/thirft/connectDB.thrift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/AdminBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/AdminBooking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/AdminPlane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/AdminPlane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/AdminUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/AdminUsers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetBookingByID.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetBookingByID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetPlane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetPlane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetSchedulerByID.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/SaleGetSchedulerByID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/UserGetAllScheduler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/UserGetAllScheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JettyClass/UserGetPlane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JettyClass/UserGetPlane.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +261,11 @@
       <workItem from="1584926481922" duration="4267000" />
       <workItem from="1584969245022" duration="610000" />
       <workItem from="1585013330277" duration="659000" />
+      <workItem from="1585017308577" duration="5062000" />
+      <workItem from="1585051960212" duration="645000" />
+      <workItem from="1585100763992" duration="2408000" />
+      <workItem from="1585191621932" duration="3002000" />
+      <workItem from="1585272992709" duration="2419000" />
     </task>
     <servers />
   </component>

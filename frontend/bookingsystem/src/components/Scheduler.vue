@@ -1,93 +1,158 @@
 <template>
-    <div>
-        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                        <button class="btn btn-default" @click="logout">
-                            Logout
-                        </button>
+    <div class="page-container" id="booking">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content" @click="home">
+                                        <i class="zmdi zmdi-home"></i>
+                                        HOME
+                                    </div>
 
-            <div class="collapse navbar-collapse justify-content-between" id="navbar">
-            </div>
-        </nav>
-
-        <div class="section-center">
-            <div class="container">
-        <div class="row" id="form-register">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <form action="" method="post" @submit.prevent="add">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" ><h2>{{title}}</h2></div>
-                        <div class="panel-body">
-                            <div class="form-group-lg">
-                                <label>Choose date</label>
-                                <input v-model="dataform.date" class="form-control" type="date">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Choose plane</label>
-                                <select class="form-control" v-model="dataform.plane">
-                                    <option v-for="(plane,index) in planedata" :key="index"  :value="{id: plane.Id_plane, text: plane.planename}">{{plane.planename}}</option>
-                                </select>
+                        </form>
+                        <div class="header-button">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content" @click="logout">
+                                        <i class="zmdi zmdi-power"></i>Logout
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label>Your worktime</label>
-                                <vue-range-slider ref="slider" v-model="value" :min="min" :max="max"  :enable-cross="enableCross"
-                                                      :step="step" :min-range="minrange"></vue-range-slider>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Add</button>
-                                <button type="reset" class="btn btn-success">Reset</button>
-                                <label class="label label-success">{{message}} - Code: {{success}}</label>
-                            </div>
-
                         </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+<!--        End of Header-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="card">
+                                <div class="card-header"><strong class="card-title">Your work time</strong></div>
+                                <div class="card-body">
+                                <vue-bootstrap-table
+                                        :columns="columnScheduler"
+                                        :values="MergeSale"
+                                        :show-filter="true"
+                                        :sortable="true"
+                                        :paginated="true"
+                                        :multi-column-sortable=true
+                                        :filter-case-sensitive=false
+                                        :selectable=false
+                                        :pageSize="5"
+                                        class="table table-borderless table-data3"
+                                ></vue-bootstrap-table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-header">Work time</div>
+                                <div class="card-body card-block">
+                                    <hr>
+                                    <form action="" method="post"  @submit.prevent="add">
+                                        <div class="form-group">
+                                            <label  class="form-control-label">Choose plane</label>
+                                            <select class="form-control " v-model="dataform.plane">
+                                                <option v-for="(plane,index) in planedata" :key="index"  :value="{id: plane.Id_plane, text: plane.planename}">{{plane.planename}}</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group has-success">
+                                            <label class="form-control-label">Choose date</label>
+                                            <input v-model="dataform.date" class="form-control" type="date">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Choose your worktime</label>
+                                            <vue-range-slider ref="slider" v-model="value" :min="min" :max="max"  :enable-cross="enableCross"
+                                                              :step="step" :min-range="minrange"></vue-range-slider>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Add
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Reset
+                                            </button>
+                                            <label class="label label-success">{{message}} - Code: {{success}}</label>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                        <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-lg-1">
+                                                <strong class="card-title">Schedule By</strong>
+                                                <div class="select">
+                                                    <select class="form-control" v-model="displayPeriodUom">
+                                                        <option>month</option>
+                                                        <option>week</option>
+                                                        <option>year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <strong class="card-title">Period</strong>
+                                                <div class="select">
+                                                    <select class="form-control" v-model="displayPeriodCount">
+                                                        <option :value="1">1</option>
+                                                        <option :value="2">2</option>
+                                                        <option :value="3">3</option>
+                                                        <option :value="4">4</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                            <div class="card-body">
+                                <calendar-view
+                                        :events="BookingList"
+                                        :show-date="showDate"
+                                        :show-event-times="true"
+                                        :display-period-uom="displayPeriodUom"
+                                        :display-period-count="displayPeriodCount"
+                                        :time-format-options="{ hour: 'numeric', minute: '2-digit' }"
+                                        @click-event="onClickItem"
+
+                                        class=" theme-default holiday-us-traditional holiday-us-official"
+                                >
+
+                                    <calendar-view-header
+                                            slot="header"
+                                            slot-scope="{ headerProps }"
+                                            :header-props="headerProps"
+                                            @input="setShowDate"
+
+                                    />
+                                </calendar-view>
+                                <Details v-if="showModal" @close="showModal = false">
+                                    <h3 slot="body">{{title}}</h3>
+                                </Details>
+
+                            </div>
+
 
                     </div>
-
-                </form>
-                <h2>NOTE user</h2>
-
-
-                <vue-bootstrap-table
-                        :columns="columnsBooking"
-                        :values="BookingList"
-                        :show-filter="true"
-                        :sortable="true"
-                        :paginated="true"
-                        :multi-column-sortable=true
-                        :filter-case-sensitive=false
-                        :selectable=false
-                        :pageSize="5"
-                ></vue-bootstrap-table>
-
-
-
-                <br>
-                <h2>All your work time</h2>
-                <vue-bootstrap-table
-                        :columns="columnScheduler"
-                        :values="MergeSale"
-                        :show-filter="true"
-                        :sortable="true"
-                        :paginated="true"
-                        :multi-column-sortable=true
-                        :filter-case-sensitive=false
-                        :selectable=false
-                        :pageSize="5"
-                ></vue-bootstrap-table>
+                </div>
             </div>
-
         </div>
-
-            </div>
-
-        </div>
-
     </div>
-
 </template>
 
 <script>
@@ -99,77 +164,30 @@
     import VueRangeSlider from 'vue-range-component'
     import moment from 'moment';
     import VueBootstrapTable from "vue2-bootstrap-table2";
+    import { CalendarView, CalendarViewHeader } from "vue-simple-calendar"
+    import Details from './Details'
+    require("vue-simple-calendar/static/css/default.css");
+    require("vue-simple-calendar/static/css/holidays-us.css");
 
     export default {
         name: "Scheduler",
         data() {
             return {
                 title: 'Add new worktime',
-                dataform: [], //Store to add new worktime of sale plane,date
+                dataform: {}, //Store to add new worktime of sale plane,date
                 schedulerdata: [],//Data get from sale database id, date, plane, starts, ends
                 userdata: [],//Data get from booking in database_Note of user
                 planedata: [],//data from master database plane
                 message: "",
                 value: [0, 24],
                 success: "",
-                columnsBooking: [
-                    {
-                        name: 'Id_booking',
-                        title: "ID",
-                        visible:true,
-                        sortable: true,
-                        filterable:true,
-                    },
-                    {
-                            name: 'Full_name',
-                            title: "Full Name",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-                        },
-                        {
-                            name: 'Phone',
-                            title: "Phone",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-
-                        },
-                        {
-                            name: 'Email',
-                            title: "Email",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-
-                        },
-                        {
-                            name: 'Datebooking',
-                            title: "Date Booking",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-
-                        },
-                        {
-                            name: 'Timebooking',
-                            title: "Time Booking",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-
-                        },
-                        {
-                            name: 'planename',
-                            title: "Location",
-                            visible:true,
-                            sortable: true,
-                            filterable:true,
-                        }
-                    ],
+                showDate: new Date(),
+                displayPeriodUom: "month",
+                displayPeriodCount: 1,
+                showModal: false,
                 columnScheduler: [
                     {
-                        name: 'Id_sale',
+                        name: 'Id_scheduler',
                         title: "ID",
                         visible:true,
                         sortable: true,
@@ -211,33 +229,55 @@
 
             }
         },
-        beforeCreate() {
-            if (this.$cookie.get('CurrentAccountID') === null || this.$cookie.get('CurrentAccountType') < '2') {
+        mounted() {
+            if (this.$cookie.get('CurrentAccountType') < '1') {
                 this.$router.push('/login');
             }
+            else if(this.$cookie.get('CurrentAccountType')==='1')
+                this.$router.push('/admin')
         },
 
         methods: {
             logout() {
-                Logout();
-                this.$router.push('/login');
+                Logout().then(()=>{
+                    this.$router.push('/login');
+                });
             },
+            home(){
+                this.$router.push('/');
+            },
+
+            setShowDate(d) {
+                this.showDate = d;
+            },
+
             timestamp(hours) {
-                return moment.utc(hours * 3600 * 1000).format('HH:mm')
+                if(hours===24)
+                    return '24:00';
+                else
+                    return moment.utc(hours * 3600 * 1000).format('HH:mm')
             },
             datestamp(date) {
-                return moment(date).format("DD/MM/YYYY");
+                return moment(date).format("YYYY-MM-DD");
             },
+            onClickItem(e) {
+                this.showModal=true;
+                this.title= `${e.title}`;
+            },
+
             add() {
                 if (this.dataform.plane.text === undefined)
                     return this.message = "Added failed";
-
                 else {
                     new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'), this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
                         // console.log(response);
                         if (response.data.result > 0) {
                             this.message = "You added success!";
                             this.success = response.data.result;
+                            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response => {
+                                // console.log(response.data);
+                                this.schedulerdata = response.data;
+                            });
                         } else {
                             this.message = "Added failed";
                             this.success = response.data.result;
@@ -249,6 +289,9 @@
         components: {
             VueRangeSlider,
             VueBootstrapTable: VueBootstrapTable,
+            CalendarView,
+            CalendarViewHeader,Details
+
         },
         computed: {
             MergeSale() {
@@ -262,7 +305,15 @@
                 // return this.userdata.map((item,i)=> Object.assign({},item,this.planedata[i]));
                 return this.userdata.map(item => {
                     const obj = this.planedata.find(o => o.Id_plane === item.Id_plane);
-                    return {...item, ...obj};
+                    const arr=
+                        {
+                            id: item.Id_booking,
+                            startDate: this.datestamp(item.Datebooking) +" "+ item.Timebooking,
+                            title: "Gặp: " + item.Full_name + " tại "+obj.planename + ", điện thoại: "+item.Phone + ", email: "+ item.Email
+                        }
+                    ;
+                    return arr;
+
                 })
 
             },
@@ -294,8 +345,23 @@
 
     }
 </script>
+
 <style scoped>
-        @import '../assets/css/bootstrap.min.css';
+        /*@import '../assets/css/schedule.css';*/
+        @import "../assets/Lib/css/font-face.css";
+        @import "../assets/Lib/vendor/font-awesome-4.7/css/font-awesome.min.css";
+        @import "../assets/Lib/vendor/font-awesome-5/css/fontawesome-all.min.css";
+        @import "../assets/Lib/vendor/mdi-font/css/material-design-iconic-font.min.css";
+        @import "../assets/Lib/vendor/bootstrap-4.1/bootstrap.min.css";
+        @import "../assets/Lib/vendor/animsition/animsition.min.css";
+        @import "../assets/Lib/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css";
+        @import "../assets/Lib/vendor/wow/animate.css";
+        @import "../assets/Lib/vendor/css-hamburgers/hamburgers.min.css";
+        @import "../assets/Lib/vendor/slick/slick.css";
+        @import "../assets/Lib/vendor/select2/select2.min.css";
+        @import "../assets/Lib/vendor/perfect-scrollbar/perfect-scrollbar.css";
+        @import "../assets/Lib/css/theme.css";
+
 </style>
 
 

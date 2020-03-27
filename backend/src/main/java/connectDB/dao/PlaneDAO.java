@@ -58,7 +58,7 @@ public class PlaneDAO {
 
             List<plane> planelist = new ArrayList<>();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from plane where ID_sale IS NULL OR ID_sale ="+id);
+            ResultSet rs = statement.executeQuery("select * from plane where ID_sale ="+id);
             while(rs.next()){
                 plane pl=new plane();
                 pl.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));

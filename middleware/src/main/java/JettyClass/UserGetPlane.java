@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,7 +25,7 @@ public class UserGetPlane extends HttpServlet {
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
-            HttpSession session=req.getSession(false);
+//            HttpSession session=req.getSession(false);
 
                 TTransport transport; //1
                 transport = new TSocket("localhost", 9090); //2
@@ -41,6 +38,14 @@ public class UserGetPlane extends HttpServlet {
                 Gson gson = new GsonBuilder().create();
                 JsonArray arr = gson.toJsonTree(lstplane).getAsJsonArray();
                 out.print(arr.toString());
+//                if(session == null)
+//                {
+//                    Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                    Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                    resp.addCookie(user);
+//                    resp.addCookie(type);
+//
+//                }
                 transport.close();
         } catch (TTransportException e) {
             e.printStackTrace();

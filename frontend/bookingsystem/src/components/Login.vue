@@ -1,52 +1,59 @@
 <template>
-    <div class="limiter" id="form-login">
-        <div class="container-login100">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-                <form class="login100-form validate-form" method="post" @submit.prevent="login">
-					<span class="login100-form-title p-b-33">
-						Account Login
-					</span>
+    <div class="page-wrapper" id="booking">
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content" @click="home">
+                                        <i class="zmdi zmdi-home"></i>
+                                        HOME
+                                    </div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Username" v-model="formdata.username">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="pass" placeholder="Password"  v-model="formdata.password">
-                        <span class="focus-input100-1"></span>
-                        <span class="focus-input100-2"></span>
+                </div>
+            </div>
+        </header>
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-form">
+                            <form action="" method="post" @submit.prevent="login">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="au-input au-input--full" name="email" placeholder="Email" v-model="formdata.username">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password" v-model="formdata.password">
+                                </div>
+                                <div class="login-checkbox">
+                                    <label>
+                                        <a href="#">Forgotten Password?</a>
+                                    </label>
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Log in</button>
+                                <div class="social-login-content">
+                                </div>
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    Go back?
+                                    <a href="#" @click="Goback">Click here</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="container-login100-form-btn m-t-20">
-                        <button class="login100-form-btn">
-                            Sign in
-                        </button>
-                    </div>
-
-                    <div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-
-                        <a href="#" class="txt2 hov1">
-                            Username / Password?
-                        </a>
-                    </div>
-
-                    <div class="text-center">
-						<span class="txt1">
-							Go back?
-						</span>
-
-                        <a href="#" class="txt2 hov1" @click="Goback">
-                            Click here
-                        </a>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+
     </div>
 
 
@@ -67,10 +74,12 @@
             }
         },
         mounted(){
-            if(this.$cookie.get('CurrentAccountID') !== null)
+            if(this.$cookie.get('CurrentAccountType')> '1')
             {
                 this.$router.push('/scheduler');
             }
+            else if(this.$cookie.get('CurrentAccountType')==='1')
+            this.$router.push('/admin');
         },
         methods:{
             login(){
@@ -78,7 +87,7 @@
                     if(respone.data.Id_sale>0){
                         if(this.$cookie.get('CurrentAccountType')>'1'){
                             alert("Log in successful");
-                            this.$store.commit('updateName',respone.data.Fullname)
+                            this.$store.commit('updateName',respone.data.Fullname);
                             this.$router.push('/scheduler');
                         }
                         else if( this.$cookie.get('CurrentAccountType')==='1'){
@@ -92,6 +101,10 @@
                     }
                 })
             },
+            home(){
+                this.$router.push('/');
+            },
+
             Goback(){
                 this.$router.push('/');
             },
@@ -101,16 +114,18 @@
 </script>
 
 <style>
-    @import '../assets/login/vendor/bootstrap/css/bootstrap.min.css';
-    @import '../assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
-    @import '../assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css';
-    @import '../assets/login/vendor/animate/animate.css';
-    @import '../assets/login/vendor/css-hamburgers/hamburgers.min.css';
-    @import '../assets/login/vendor/animsition/css/animsition.min.css';
-    @import '../assets/login/vendor/select2/select2.min.css';
-    @import '../assets/login/vendor/daterangepicker/daterangepicker.css';
-    @import '../assets/login/css/util.css';
-    @import '../assets/login/css/main.css';
-
+@import "../assets/Lib/css/font-face.css";
+@import "../assets/Lib/vendor/font-awesome-4.7/css/font-awesome.min.css";
+@import "../assets/Lib/vendor/font-awesome-5/css/fontawesome-all.min.css";
+@import "../assets/Lib/vendor/mdi-font/css/material-design-iconic-font.min.css";
+@import "../assets/Lib/vendor/bootstrap-4.1/bootstrap.min.css";
+@import "../assets/Lib/vendor/animsition/animsition.min.css";
+@import "../assets/Lib/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css";
+@import "../assets/Lib/vendor/wow/animate.css";
+@import "../assets/Lib/vendor/css-hamburgers/hamburgers.min.css";
+@import "../assets/Lib/vendor/slick/slick.css";
+@import "../assets/Lib/vendor/select2/select2.min.css";
+@import "../assets/Lib/vendor/perfect-scrollbar/perfect-scrollbar.css";
+@import "../assets/Lib/css/theme.css";
 </style>
 

@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,7 +28,6 @@ public class SaleGetPlane extends HttpServlet {
             HttpSession session=req.getSession(false);
             int id = Integer.parseInt(req.getParameter("id"));
             if(session != null ) {
-
                 TTransport transport; //1
                 transport = new TSocket("localhost", 9090); //2
                 transport.open(); //3
@@ -45,6 +41,14 @@ public class SaleGetPlane extends HttpServlet {
                 out.print(arr.toString());
                 transport.close();
             }
+//            else {
+//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                resp.addCookie(user);
+//                resp.addCookie(type);
+//
+//            }
+
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {

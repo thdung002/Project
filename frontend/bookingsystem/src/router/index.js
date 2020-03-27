@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
-import User from '@/components/User'
 import Scheduler from '@/components/Scheduler'
 import Home from '@/components/Home'
 import Admin from '@/components/Admin'
@@ -14,10 +13,6 @@ export default new Router({
         {   path: '/',
             name: 'Homepage',
             component: Home,}
-        ,
-        { path: '/user',
-            name: 'User',
-            component: User}
         ,
         {
             path: '/login',

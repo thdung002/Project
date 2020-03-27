@@ -1,85 +1,123 @@
 <template>
-    <div>
-        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-dark">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar"     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <button class="btn btn-default" @click="logout">
-                Logout
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbar">
+    <div class="page-container" id="booking">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap">
+                        <form class="form-header">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content" @click="home">
+                                        <i class="zmdi zmdi-home"></i>
+                                        HOME
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                        <div class="header-button">
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="content" @click="logout">
+                                        <i class="zmdi zmdi-power"></i>Logout
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
-        <div class="section-center">
-            <div class="container">
-                <div class="row" id="form-register">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <h2>Booking List</h2>
+        </header>
+        <!--        End of Header-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div clas="row">
+                        <div class="card">
+                            <div class="card-header"><strong class="card-title">All booking</strong></div>
+                            <div class="card-body">
+                                <vue-bootstrap-table
+                                        :columns="colBooking"
+                                        :values="BookingList"
+                                        :show-filter="true"
+                                        :sortable="true"
+                                        :paginated="true"
+                                        :multi-column-sortable=true
+                                        :filter-case-sensitive=false
+                                        :selectable=false
+                                        :pageSize="5"
+                                        class="table table-borderless table-data3"
+                                ></vue-bootstrap-table>
+                            </div>
+                            </div>
+                        <div class="card">
+                            <div class="card-header"><strong class="card-title">Schedule</strong></div>
+                            <div class="card-body">
+                                <vue-bootstrap-table
+                                        :columns="colScheduler"
+                                        :values="SchedulerMerge"
+                                        :show-filter="true"
+                                        :sortable="true"
+                                        :paginated="true"
+                                        :multi-column-sortable=true
+                                        :filter-case-sensitive=false
+                                        :selectable=false
+                                        :pageSize="5"
+                                        class="table table-borderless table-data3"
 
-                        <vue-bootstrap-table
-                                :columns="colBooking"
-                                :values="BookingList"
-                                :show-filter="true"
-                                :sortable="true"
-                                :paginated="true"
-                                :multi-column-sortable=true
-                                :filter-case-sensitive=false
-                                :selectable=false
-                                :pageSize="5"
-                        ></vue-bootstrap-table>
+                                ></vue-bootstrap-table>
+                            </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header"><strong class="card-title">Plane</strong></div>
+                                    <div class="card-body">
+                                        <vue-bootstrap-table
+                                                :columns="colPlane"
+                                                :values="PlaneList"
+                                                :show-filter="true"
+                                                :sortable="true"
+                                                :paginated="true"
+                                                :multi-column-sortable=true
+                                                :filter-case-sensitive=false
+                                                :selectable=false
+                                                :pageSize="5"
+                                                class="table table-borderless table-data3"
 
-                        <br>
-                        <h2>Scheduler</h2>
-                        <vue-bootstrap-table
-                                :columns="colScheduler"
-                                :values="SchedulerMerge"
-                                :show-filter="true"
-                                :sortable="true"
-                                :paginated="true"
-                                :multi-column-sortable=true
-                                :filter-case-sensitive=false
-                                :selectable=false
-                                :pageSize="5"
-                        ></vue-bootstrap-table>
+                                        ></vue-bootstrap-table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header"><strong class="card-title">All user</strong></div>
+                                    <div class="card-body">
+                                        <vue-bootstrap-table
+                                                :columns="colUsers"
+                                                :values="userdata"
+                                                :show-filter="true"
+                                                :sortable="true"
+                                                :paginated="true"
+                                                :multi-column-sortable=true
+                                                :filter-case-sensitive=false
+                                                :selectable=false
+                                                :pageSize="5"
+                                                class="table table-borderless table-data3"
 
-                        <br>
-                        <h2>Plane</h2>
-                        <vue-bootstrap-table
-                                :columns="colPlane"
-                                :values="PlaneList"
-                                :show-filter="true"
-                                :sortable="true"
-                                :paginated="true"
-                                :multi-column-sortable=true
-                                :filter-case-sensitive=false
-                                :selectable=false
-                                :pageSize="5"
-                        ></vue-bootstrap-table>
+                                        ></vue-bootstrap-table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <br>
-                        <h2>Users</h2>
-                        <vue-bootstrap-table
-                                :columns="colUsers"
-                                :values="userdata"
-                                :show-filter="true"
-                                :sortable="true"
-                                :paginated="true"
-                                :multi-column-sortable=true
-                                :filter-case-sensitive=false
-                                :selectable=false
-                                :pageSize="5"
-                        ></vue-bootstrap-table>
-
+                        </div>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-    </div>
 </template>
 
 <script>
@@ -102,7 +140,7 @@
                 colScheduler:[
                     {
                         name: 'Id_sale',
-                        title: "ID",
+                        title: "ID Sale",
                         visible:true,
                         sortable: true,
                         filterable:true,
@@ -255,18 +293,30 @@
             }
         },
         methods:{
-            logout(){
-                Logout();
-                this.$router.push('/login');
+            logout() {
+                Logout().then(()=>{
+                    this.$router.push('/login');
+                });
             },
+            home(){
+                this.$router.push('/');
+            },
+
             timestamp(hours){
-                return moment.utc(hours*3600*1000).format('HH:mm')
+                if(hours===24)
+                    return '24:00';
+                else
+                    return moment.utc(hours * 3600 * 1000).format('HH:mm')
             },
 
         },
-        beforeCreate(){
-            if(this.$cookie.get('CurrentAccountID')=== null || this.$cookie.get('CurrentAccountType') > '1'|| this.$cookie.get('CurrentAccountType') === '0'){
+        mounted(){
+            if(this.$cookie.get('CurrentAccountType')=== null || this.$cookie.get('CurrentAccountType') === '0'){
                 this.$router.push('/login');
+            }
+            else if(this.$cookie.get('CurrentAccountType') > '1')
+            {
+                this.$router.push('/scheduler');
             }
         },
 

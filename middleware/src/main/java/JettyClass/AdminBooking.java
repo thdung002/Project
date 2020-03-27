@@ -39,6 +39,13 @@ public class AdminBooking  extends HttpServlet{
                 out.print(arr.toString());
                 transport.close();
             }
+//            else {
+//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                resp.addCookie(user);
+//                resp.addCookie(type);
+//
+//            }
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {

@@ -24,8 +24,7 @@ public class AdminUsers extends HttpServlet {
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
-            HttpSession session=req.getSession(false);
-
+//            HttpSession session=req.getSession(false);
             TTransport transport; //1
             transport = new TSocket("localhost", 9090); //2
             transport.open(); //3
@@ -37,6 +36,14 @@ public class AdminUsers extends HttpServlet {
             Gson gson = new GsonBuilder().create();
             JsonArray arr = gson.toJsonTree(lstusr).getAsJsonArray();
             out.print(arr.toString());
+//            if(session == null)
+//            {
+//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                resp.addCookie(user);
+//                resp.addCookie(type);
+//
+//            }
             transport.close();
         } catch (TTransportException e) {
             e.printStackTrace();

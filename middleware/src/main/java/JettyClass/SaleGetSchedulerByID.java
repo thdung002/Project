@@ -12,10 +12,7 @@ import org.apache.thrift.transport.TTransportException;
 import connectDB.*;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +42,14 @@ public class SaleGetSchedulerByID extends HttpServlet{
                 transport.close();
 
             }
+//            else {
+//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                resp.addCookie(user);
+//                resp.addCookie(type);
+//
+//            }
+
 
         } catch (TTransportException e) {
             e.printStackTrace();

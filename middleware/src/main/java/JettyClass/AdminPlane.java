@@ -26,7 +26,6 @@ public class AdminPlane  extends HttpServlet{
             resp.addHeader("Access-Control-Allow-Credentials","true");
             HttpSession session=req.getSession(false);
             if(session != null ) {
-
                 TTransport transport; //1
                 transport = new TSocket("localhost", 9090); //2
                 transport.open(); //3
@@ -40,6 +39,14 @@ public class AdminPlane  extends HttpServlet{
                 out.print(arr.toString());
                 transport.close();
             }
+//            else {
+//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
+//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
+//                resp.addCookie(user);
+//                resp.addCookie(type);
+//
+//            }
+//
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
