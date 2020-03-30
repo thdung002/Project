@@ -15,7 +15,7 @@ public class JavaServer {
             handler = new serverHandler();
             processor = new connectDBService.Processor(handler);
             TServerTransport serverTransport = new TServerSocket(9090);
-             TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
+            TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
 
             // Use this for a multithreaded server
             // TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(processor));

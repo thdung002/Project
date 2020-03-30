@@ -49,17 +49,18 @@
                                     <!-- row -->
                                     <div class="row">
                                         <!-- Column 1 -->
-                                        <div class="col-md-4 col-sm-6" v-for="(planes,index) in MergeData "
-                                             :key="index" >
+                                        <div class="col-md-4 col-sm-6" v-for="(names,index1) in filteredData" :key="index1" >
                                             <!-- ARTICLE -->
-                                            <article class="article widget-article" >
+                                            <article class="article widget-article"  >
                                                 <div class="article-body" >
-                                                    <h4 class="article-title" @click="planeclick(planes.Id_plane,planes.Id_sale)"
-                                                        @keydown.esc="showModal = false"><a href="#">{{planes.planename}}</a></h4>
+                                                    <h4 class="article-title" @click="planeclick(names.Id_plane,names.Id_sale)"
+                                                        @keydown.esc="showModal = false"><a href="#">{{names.planename}}</a></h4>
+                                                    <b> {{names.Fullname}}</b>
                                                     <ul class="article-meta">
-                                                        <b> {{planes.Fullname}}</b>
-                                                        <li>
-                                                            <i>Ngày làm việc: {{datestamp(planes.DateCreated)}}</i> </li>
+                                                        <li v-for="(planes,index) in MergeData" :key="index" v-show="planes.Id_plane === names.Id_plane" @keydown.esc="showModal = false">
+                                                            <a href="#"  @click="dateclick(planes.Id_plane,planes.Id_sale,planes.DateCreated)" >
+                                                                <i>{{datestamp(planes.DateCreated)}}  {{timestamp(planes.Starts)}} - {{timestamp(planes.Ends)}}</i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </article>
@@ -89,6 +90,7 @@
     import {PlaneForUser} from "../service/UserServices/PlaneForUser";
     import {GetListLogin} from "../service/SaleServices/Login";
     import User from "./User";
+    import _ from "lodash";
     export default {
         name: "Home",
         data:function(){
@@ -107,14 +109,26 @@
             home(){
                 this.$router.push('/');
             },
-
             planeclick(idplane, idsale ){
                 this.$store.commit('updateIDPlane',idplane);
                 this.$store.commit('updateIDSale',idsale);
                 this.showModal=true;
             },
+            dateclick(idplane, idsale ,date){
+                this.$store.commit('updateIDPlane',idplane);
+                this.$store.commit('updateIDSale',idsale);
+                this.$store.commit('updateDate',date);
+                this.showModal=true;
+            },
+
             datestamp(date){
                 return moment(date).format("DD/MM/YYYY");
+            },
+            timestamp(hours) {
+                if(hours===24)
+                    return '24:00';
+                else
+                    return moment.utc(hours * 3600 * 1000).format('HH:mm')
             },
 
         },
@@ -129,6 +143,10 @@
                     return {...item,...obj,...obj2};
                 })
             },
+            filteredData(){
+                return _.uniqBy(this.MergeData,'Id_plane');
+            }
+
         },
 
         created(){

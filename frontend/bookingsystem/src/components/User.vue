@@ -1,5 +1,5 @@
 <template>
-    <transition name="modal" @clickout="$emit('close')">
+    <transition name="modal" >
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
@@ -40,11 +40,13 @@
                                     <div class="col-sm-8">
                                         <div class="form-group">
                                             <span class="form-label">Choose date</span>
+
                                             <select v-model="dataform.dateUserChoose" class="form-control" >
                                                 <option
                                                         v-for="(dates, index) in saledata"
                                                         v-show="planelast === dates.Id_plane"
                                                         :value="dates.DateCreated"
+
                                                         :key="index">{{datestamp(dates.DateCreated)}}- Start from {{timestamp(dates.Starts)}} to  {{timestamp(dates.Ends)}}</option>
                                             </select>
                                         </div>
@@ -86,7 +88,8 @@
                 success:0,
                 errors:[],
                 planelast : this.$store.state.id_plane,
-                timeval: ""
+                timeval: "",
+                datesl: this.$store.state.dateselect,
             }
         },
         methods:{
@@ -156,6 +159,7 @@
                 // console.log(respone.data);
                 this.saledata=respone.data;
             });
+            this.dataform.dateUserChoose= this.$store.state.dateselect;
         },
         components:{VueTimepicker }
     }

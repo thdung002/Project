@@ -139,8 +139,16 @@
                 schedulerdata:[],
                 colScheduler:[
                     {
-                        name: 'Id_sale',
-                        title: "ID Sale",
+                        name: 'Id_scheduler',
+                        title: "ID",
+                        visible:true,
+                        sortable: true,
+                        filterable:true,
+                    },
+
+                    {
+                        name: 'Fullname',
+                        title: "Full name",
                         visible:true,
                         sortable: true,
                         filterable:true,

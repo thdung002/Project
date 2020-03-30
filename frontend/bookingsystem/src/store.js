@@ -4,7 +4,8 @@ export const store = new Vuex.Store({
     state: {
         sale_id:0,
         id_plane:0,
-        sale_name:''
+        sale_name:'',
+        dateselect:''
     },
     getters: {
         myPlane: (state) => state.planes,
@@ -18,6 +19,9 @@ export const store = new Vuex.Store({
         },
         updateName(state,name){
             state.sale_name=name;
+        },
+        updateDate(state,d){
+            state.dateselect=d;
         }
 
     },
