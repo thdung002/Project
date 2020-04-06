@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c1e34a21-8260-445d-a78d-91904658909a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/connectDB/JavaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/connectDB/JavaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/connectDB/JavaClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/connectDB/serverHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/connectDB/serverHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/classes/connectDB/JavaClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/classes/connectDB/serverHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/target/classes/connectDB/serverHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/assets/Lib/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/assets/Lib/css/theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Admin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookingsystem/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleGetSchedulerByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleGetSchedulerByID.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +143,10 @@
       <workItem from="1585191628424" duration="19575000" />
       <workItem from="1585272999290" duration="23486000" />
       <workItem from="1585532347726" duration="8139000" />
+      <workItem from="1585618073169" duration="5143000" />
+      <workItem from="1585706580675" duration="4347000" />
+      <workItem from="1585908232304" duration="1602000" />
+      <workItem from="1586141475691" duration="2422000" />
     </task>
     <task id="LOCAL-00001" summary="Edit js file with axios - with error">
       <created>1584503165725</created>

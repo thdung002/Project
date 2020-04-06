@@ -129,16 +129,13 @@
                                         :display-period-count="displayPeriodCount"
                                         :time-format-options="{ hour: 'numeric', minute: '2-digit' }"
                                         @click-event="onClickItem"
-
                                         class=" theme-default holiday-us-traditional holiday-us-official"
                                 >
-
                                     <calendar-view-header
                                             slot="header"
                                             slot-scope="{ headerProps }"
                                             :header-props="headerProps"
                                             @input="setShowDate"
-
                                     />
                                 </calendar-view>
                                 <Details v-if="showModal" @close="showModal = false">
@@ -270,8 +267,8 @@
                     return this.message = "Added failed";
                 else {
                     new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'), this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
-                        // console.log(response);
-                        if (response.data.result > 0) {
+                        console.log(response);
+                        if (response.data.result !== 0) {
                             this.message = "You added success!";
                             this.success = response.data.result;
                             new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response => {

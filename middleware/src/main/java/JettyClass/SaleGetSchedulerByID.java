@@ -79,18 +79,12 @@ public class SaleGetSchedulerByID extends HttpServlet{
                 TProtocol protocol = new TBinaryProtocol(transport); //4
                 connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
                 int result = client.InsertOrUpdateScheduler(sl);
-                if(result >= 1){
                     ServletOutputStream out = resp.getOutputStream();
                     Gson gson = new GsonBuilder().create();
                     Map<String, Integer> res= new HashMap<>();
                     res.put("result",result);
                     JsonObject arr = gson.toJsonTree(res).getAsJsonObject();
                     out.print(arr.toString());
-                }
-                else{
-                    resp.setStatus(404);
-                    req.setAttribute("error", "Cant add");
-                }
                 transport.close();
             }
         } catch (TTransportException e) {

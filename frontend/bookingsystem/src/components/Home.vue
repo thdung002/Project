@@ -112,6 +112,8 @@
             planeclick(idplane, idsale ){
                 this.$store.commit('updateIDPlane',idplane);
                 this.$store.commit('updateIDSale',idsale);
+                this.$store.commit('updateDate','');
+
                 this.showModal=true;
             },
             dateclick(idplane, idsale ,date){

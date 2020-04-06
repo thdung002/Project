@@ -112,9 +112,7 @@ public class serverHandler implements connectDBService.Iface{
         if(checking==0)//add new
         {
             InsertScheduler(schedul);
-            UpdatePlane(schedul.getId_plane(),schedul.getId_sale());
             result=7;
-
         }
         else {
             for (scheduler scheduldata : schedulDatabase) {

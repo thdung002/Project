@@ -47,6 +47,8 @@
                                         :filter-case-sensitive=false
                                         :selectable=false
                                         :pageSize="5"
+                                        :showSelectfilter="true"
+
                                         class="table table-borderless table-data3"
                                 ></vue-bootstrap-table>
                             </div>
