@@ -82,6 +82,25 @@ public class serverHandler implements connectDBService.Iface{
     }
 
     @Override
+    public int InsertUser(users usr) throws TException, SQLException, ClassNotFoundException {
+//        if(usern.InsertUser(usr)==1) return 1;
+//        else return 0;
+        List<users> userDB = new ArrayList<>();
+        userDB = usern.GetAllUser();
+        int checking=0;
+        for(users user : userDB)
+            if(usr.getUsername().contains(usr.getUsername()))
+            {
+                checking=1;
+                return 0;
+            }
+        if(checking!= 0){
+            if(usern.InsertUser(usr)==1) return 1;
+        }
+        return 0;
+    }
+
+    @Override
     public int UpdateScheduler(scheduler schedul) throws TException, SQLException, ClassNotFoundException {
         if(schedu.UpdateScheduler(schedul)== 1) return 1;
         else
@@ -162,6 +181,38 @@ public class serverHandler implements connectDBService.Iface{
         }
         System.out.println("Result: "+ result);
         return result;
+    }
+
+    @Override
+    public int DeleteScheduler(int id_scheduler) throws TException, SQLException, ClassNotFoundException {
+        if(schedu.DeleteScheduler(id_scheduler)== 1) return 1;
+        else
+            return 0;
+
+    }
+
+    @Override
+    public int DeletePlane(int id_plane) throws TException, SQLException, ClassNotFoundException {
+        if(pl.DeletePlane(id_plane)== 1) return 1;
+        else
+            return 0;
+
+    }
+
+    @Override
+    public int DeleteBooking(int id_booking) throws TException, SQLException, ClassNotFoundException {
+        if(bk.DeleteBooking(id_booking)== 1) return 1;
+        else
+            return 0;
+
+    }
+
+    @Override
+    public int DeleteUser(int id_user) throws TException, SQLException, ClassNotFoundException {
+        if(usern.DeleteUser(id_user)== 1) return 1;
+        else
+            return 0;
+
     }
 
     @Override

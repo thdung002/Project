@@ -62,7 +62,7 @@
 
 <script>
     import {Login} from "../service/SaleServices/Login";
-
+    import * as Cookies from"../service/Cookies/Cookies";
     export default {
         name: "Login",
         data(){
@@ -74,23 +74,32 @@
             }
         },
         mounted(){
-            if(this.$cookie.get('CurrentAccountType')> '1')
-            {
-                this.$router.push('/scheduler');
-            }
-            else if(this.$cookie.get('CurrentAccountType')==='1')
-            this.$router.push('/admin');
+            // if(this.$cookie.get('CurrentAccountType')> '1')
+            // {
+            //     this.$router.push('/scheduler');
+            // }
+            // else if(this.$cookie.get('CurrentAccountType')==='1')
+            // this.$router.push('/admin');
+
+            new Cookies.GetCheckingCookies(this.$cookie.get('JSESSIONID')).then(response => {
+                this.checkinglist = response.data;
+                if (response.data.AccountType > 1) {
+                    this.$router.push('/scheduler');
+                } else if (response.data.AccountType === 1) {
+                    this.$router.push('/admin');
+                }
+            })
         },
         methods:{
             login(){
                 new Login(this.formdata.username,this.formdata.password).then(respone =>{
                     if(respone.data.Id_sale>0){
-                        if(this.$cookie.get('CurrentAccountType')>'1'){
+                        if(respone.data.AccountType>1){
                             alert("Log in successful");
                             this.$store.commit('updateName',respone.data.Fullname);
                             this.$router.push('/scheduler');
                         }
-                        else if( this.$cookie.get('CurrentAccountType')==='1'){
+                        else if( respone.data.AccountType===1){
                             alert("Log in successful");
                             this.$router.push('/admin');
                         }

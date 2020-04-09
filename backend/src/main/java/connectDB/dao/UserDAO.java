@@ -27,10 +27,11 @@ public class UserDAO {
         Connection conn = getConnection();
         try {
             users userlst = new users();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery
-                    ("select * from users where Username = '"+usrn+"' and Password='"+pwd+"'");
-            while(rs.next()){
+            PreparedStatement ps = conn.prepareStatement("select * from users where Username =? and Password=?");
+            ps.setString(1,usrn);
+            ps.setString(2,pwd);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
                 userlst.setId_sale(rs.getInt("ID_Sale"));
                 userlst.setUsername(rs.getString("Username"));
                 userlst.setPassword(rs.getString("Password"));
@@ -96,6 +97,43 @@ public class UserDAO {
         } catch (Exception e) {
             System.out.println(e.toString());
             return null;
+        }
+        finally{
+            conn.close();
+        }
+    }
+    public int DeleteUser(int id) throws SQLException, ClassNotFoundException{
+        Connection conn = getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `users` WHERE ID_Sale=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return -1;
+        }
+        finally{
+            conn.close();
+        }
+    }
+
+    public int InsertUser(users usr) throws SQLException, ClassNotFoundException
+    {
+        Connection conn = getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement
+                    ("INSERT INTO `users`(`Full_Name`, `Username`, `Password`, `AccountType`) VALUES (?,?,?,?)");
+            ps.setString(1,usr.getFullname());
+            ps.setString(2,usr.getUsername());
+            ps.setString(3,usr.getPassword());
+            ps.setInt(4,usr.getAccountType());
+            ps.executeUpdate();
+            return 1;
+        }
+        catch (SQLException e) {
+            System.out.println(e.toString());
+            return -1;
         }
         finally{
             conn.close();

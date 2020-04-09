@@ -8,3 +8,16 @@ export async function GetAllBooking(){
     });
 
 }
+export function
+Delete(id){
+    return axios.post('/admin/booking/delete',null,{
+        params:{
+            id: id
+        }
+    }).then(respone=>{
+        return respone;
+    }).catch(e=> {
+        console.log(e);
+    });
+}
+

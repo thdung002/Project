@@ -19,10 +19,8 @@
                         <div class="header-button">
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
-                                    <div class="content" @click="login" v-if="this.$cookie.get('CurrentAccountType') > '0'">
-                                        <i class="zmdi zmdi-settings"></i>Go to manage
-                                    </div>
-                                    <div class="content" @click="login" v-if="this.$cookie.get('CurrentAccountType') === '0'|| this.$cookie.get('CurrentAccountType') === null">
+
+                                    <div class="content" @click="login">
                                         <i class="zmdi zmdi-power"></i>Login
                                     </div>
 
@@ -113,7 +111,6 @@
                 this.$store.commit('updateIDPlane',idplane);
                 this.$store.commit('updateIDSale',idsale);
                 this.$store.commit('updateDate','');
-
                 this.showModal=true;
             },
             dateclick(idplane, idsale ,date){

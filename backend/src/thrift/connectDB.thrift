@@ -59,9 +59,16 @@ service connectDBService{
     i32 InsertBooking(1:booking infor),//ok
     i32 InsertScheduler(1:scheduler schedul),//ok
     i32 InsertPlane(1:plane pl),
+    i32 InsertUser(1:users usr),
     i32 UpdateScheduler(1:scheduler schedul),
     i32 UpdatePlane(1:i32 id_plane, 2:i32 id_sale),
     i32 InsertOrUpdateScheduler(1:scheduler schedul),
+
+    i32 DeleteScheduler(1: i32 id_scheduler),
+    i32 DeletePlane(1: i32 id_plane),
+    i32 DeleteBooking(1: i32 id_booking),
+    i32 DeleteUser(1: i32 id_user),
+
     list<users> GetListSale(),
     list<users> GetAllUser(),
     list<plane> GetAllPlane(),

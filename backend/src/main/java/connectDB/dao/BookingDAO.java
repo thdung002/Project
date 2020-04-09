@@ -60,8 +60,10 @@ public static BookingDAO getInstance() {
 
         try {
             List<booking> bookinglist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from booking where Id_sale="+id);
+            PreparedStatement ps = conn.prepareStatement("select * from booking where Id_sale=?");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+
             while(rs.next()){
                 booking bk=new booking();
                 bk.setId_booking(Integer.parseInt(rs.getString("ID_Booking")));
@@ -111,9 +113,23 @@ public static BookingDAO getInstance() {
         finally{
             conn.close();
         }
-
-
     }
+    public int DeleteBooking(int id) throws SQLException, ClassNotFoundException{
+        Connection conn = getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `booking` WHERE ID_Booking=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return -1;
+        }
+        finally{
+            conn.close();
+        }
+    }
+
 
 
 }

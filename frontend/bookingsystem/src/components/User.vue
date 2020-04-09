@@ -93,9 +93,6 @@
             }
         },
         methods:{
-            getNumbers:function(start,stop){
-                return new Array((stop -start)*2).fill(start).map((n,i)=>i*0.5+n);
-            },
             validEmail:function(email) {
                 var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);

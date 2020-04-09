@@ -14,6 +14,18 @@ GetSchedulerForSale(id){
     });
 
 }
+export function
+Delete(id){
+    return axios.post('/sale/schedule/delete',null,{
+        params:{
+            id: id
+        }
+    }).then(respone=>{
+        return respone;
+    }).catch(e=> {
+        console.log(e);
+    });
+}
 
 export function
 AddScheduler(id,date,start,end,idplane){

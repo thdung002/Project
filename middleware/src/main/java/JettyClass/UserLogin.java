@@ -15,9 +15,12 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.*;
 import java.io.Console;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserLogin extends HttpServlet{
+    public static Map<String, Object> ck = new HashMap<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         System.out.println("GET SALE ");
@@ -70,11 +73,10 @@ public class UserLogin extends HttpServlet{
                 session.setAttribute("CurrentAccountID",lstuser.getId_sale());
                 session.setAttribute("CurrentAccountType",lstuser.getAccountType());
                 session.setMaxInactiveInterval(1800);
-                Cookie user = new Cookie("CurrentAccountID",String.valueOf(lstuser.getId_sale()));
-                Cookie type = new Cookie("CurrentAccountType",String.valueOf(lstuser.getAccountType()));
-                resp.addCookie(user);
-                resp.addCookie(type);
-                System.out.println(session.getId());
+
+
+                ck.put(session.getId(), lstuser);
+                System.out.println(ck);
 
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();

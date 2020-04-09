@@ -65,7 +65,7 @@ public class SaleGetSchedulerByID extends HttpServlet{
         sl.setId_plane(Integer.parseInt(req.getParameter("idplane")));
         sl.setStarts(Float.parseFloat(req.getParameter("start")));
         sl.setEnds(Float.parseFloat(req.getParameter("end")));
-        System.out.println("Add sale");
+        System.out.println("Add scheduler");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");

@@ -17,6 +17,8 @@
                             </div>
                         </form>
                         <div class="header-button">
+                            <div class="content">Hi {{checkinglist.Fullname}},</div>
+
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="content" @click="logout">
@@ -36,8 +38,18 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <div class="card">
-                                <div class="card-header"><strong class="card-title">Your work time</strong></div>
+                                <div class="card-header">
+                                    <strong class="card-title">Your work time</strong>
+                                </div>
                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-11"></div>
+                                        <div class="col-lg-1">
+                                            <button class="btn btn-danger btn-sm" @click="DeleteSchedule">
+                                                <i class="fa fa-minus"></i> Delete
+                                            </button>
+                                        </div>
+                                    </div>
                                 <vue-bootstrap-table
                                         :columns="columnScheduler"
                                         :values="MergeSale"
@@ -46,7 +58,7 @@
                                         :paginated="true"
                                         :multi-column-sortable=true
                                         :filter-case-sensitive=false
-                                        :selectable=false
+                                        :selectable=true
                                         :pageSize="5"
                                         class="table table-borderless table-data3"
                                 ></vue-bootstrap-table>
@@ -139,6 +151,7 @@
                                     />
                                 </calendar-view>
                                 <Details v-if="showModal" @close="showModal = false">
+                                    <h2 slot="header">{{time}}</h2>
                                     <h3 slot="body">{{title}}</h3>
                                 </Details>
 
@@ -156,6 +169,8 @@
     import  * as Booking from '../service/SaleServices/BookingForSale';
     import * as Plane from "../service/SaleServices/PlaneForSale";
     import * as Scheduler from "../service/SaleServices/SchedulerForSale";
+    import * as Cookies from"../service/Cookies/Cookies";
+
     import {Logout} from "../service/SaleServices/Logout";
     import 'vue-range-component/dist/vue-range-slider.css'
     import VueRangeSlider from 'vue-range-component'
@@ -165,6 +180,7 @@
     import Details from './Details'
     require("vue-simple-calendar/static/css/default.css");
     require("vue-simple-calendar/static/css/holidays-us.css");
+    require('moment/locale/vi.js');
 
     export default {
         name: "Scheduler",
@@ -175,6 +191,7 @@
                 schedulerdata: [],//Data get from sale database id, date, plane, starts, ends
                 userdata: [],//Data get from booking in database_Note of user
                 planedata: [],//data from master database plane
+                checkinglist: {}, // checking account when refesh with jsessionid cookie  - the user information will store here
                 message: "",
                 value: [0, 24],
                 success: "",
@@ -182,6 +199,7 @@
                 displayPeriodUom: "month",
                 displayPeriodCount: 1,
                 showModal: false,
+                time:"",
                 columnScheduler: [
                     {
                         name: 'Id_scheduler',
@@ -226,13 +244,6 @@
 
             }
         },
-        mounted() {
-            if (this.$cookie.get('CurrentAccountType') < '1') {
-                this.$router.push('/login');
-            }
-            else if(this.$cookie.get('CurrentAccountType')==='1')
-                this.$router.push('/admin')
-        },
 
         methods: {
             logout() {
@@ -260,18 +271,49 @@
             onClickItem(e) {
                 this.showModal=true;
                 this.title= `${e.title}`;
+                for(let i=0; i<this.userdata.length;i++)
+                {
+                    if(e.id === this.userdata[i].Id_booking)
+                    {
+                        this.time = this.userdata[i].Timebooking + " " + moment(this.userdata[i].Datebooking).locale('vi').format("dddd DD, MMMM  YYYY");
+                    }
+                }
             },
+            DeleteSchedule(){
+                let counter=0;
+                for(let i=0; i< this.MergeSale.length; i++)
+                {
+                    if(this.MergeSale[i].selected === true)
+                    {
+                        this.counter+=1;
+                        new Scheduler.Delete(this.MergeSale[i].Id_scheduler).then(response =>{
+                            if(response.data.result === 1)
+                            {
+                                window.location.reload();
+                                this.message="Delete success";
+                                this.counter+=1;
+                            }
+                            else{
+                                this.message="Delete failed";
+                            }
 
+                        })
+                    }
+                }
+                if(counter===0){this.message="Please choose at least 1 rows to delete";}
+            },
             add() {
                 if (this.dataform.plane.text === undefined)
                     return this.message = "Added failed";
+                else if(this.dataform.date < this.datestamp(this.showDate))
+                    return this.message="Can't add with older date with today";
                 else {
-                    new Scheduler.AddScheduler(this.$cookie.get('CurrentAccountID'), this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
+                    new Scheduler.AddScheduler(this.checkinglist.Id_sale, this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
                         console.log(response);
                         if (response.data.result !== 0) {
                             this.message = "You added success!";
                             this.success = response.data.result;
-                            new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response => {
+                            new Scheduler.GetSchedulerForSale(this.checkinglist.Id_sale).then(response => {
                                 // console.log(response.data);
                                 this.schedulerdata = response.data;
                             });
@@ -322,19 +364,37 @@
                 this.step = 0.5;
                 this.minrange = 2;
                 this.enableCross = false;
-
-                new Scheduler.GetSchedulerForSale(this.$cookie.get('CurrentAccountID')).then(response => {
-                    // console.log(response.data);
-                    this.schedulerdata = response.data;
-                });
-                new Booking.GetListBookingByID(this.$cookie.get('CurrentAccountID')).then(respone => {
-                    // console.log(respone.data);
-                    this.userdata = respone.data;
-                });
-                new Plane.PlaneForSale(this.$cookie.get('CurrentAccountID')).then(respone => {
-                    // console.log(respone.data);
-                    this.planedata = respone.data;
-                });
+                if(this.$cookie.get('JSESSIONID')===null){
+                    this.$router.push('/login');
+                }
+                else{
+                    new Cookies.GetCheckingCookies(this.$cookie.get('JSESSIONID')).then(response =>{
+                        this.checkinglist = response.data;
+                        if(this.checkinglist.AccountType<1 || this.checkinglist === "")
+                        {
+                            alert("Invalid session - please login again");
+                            this.$router.push('/login');
+                        }
+                        else if(this.checkinglist.AccountType === 1)
+                        {
+                            this.$router.push('/admin');
+                        }
+                        else{
+                            new Scheduler.GetSchedulerForSale(this.checkinglist.Id_sale).then(response => {
+                                // console.log(response.data);
+                                this.schedulerdata = response.data;
+                            });
+                            new Booking.GetListBookingByID(this.checkinglist.Id_sale).then(respone => {
+                                // console.log(respone.data);
+                                this.userdata = respone.data;
+                            });
+                            new Plane.PlaneForSale(this.checkinglist.Id_sale).then(respone => {
+                                // console.log(respone.data);
+                                this.planedata = respone.data;
+                            });
+                        }
+                    });
+                }
 
 
             }

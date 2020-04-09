@@ -6,7 +6,11 @@
                     <button type="button" class="close" @click="$emit('close')" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-
+                    <div class="modal-header">
+                        <slot name="header">
+                            default header
+                        </slot>
+                    </div>
                     <div class="modal-body">
                         <slot name="body">
                             default body
@@ -66,7 +70,7 @@
     }
 
     .modal-container {
-        width: 500px;
+        width: 600px;
         margin: 0px auto;
         padding: 20px 30px;
         background-color: #fff;

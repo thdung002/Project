@@ -51,8 +51,9 @@ public List<scheduler> GetScheduler() throws SQLException, ClassNotFoundExceptio
         Connection conn = getConnection();
         try {
             List<scheduler> salelist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from scheduler where ID_Sale = '"+id+"'");
+            PreparedStatement ps = conn.prepareStatement("select * from scheduler where ID_Sale =?");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 scheduler sl=new scheduler();
                 sl.setId_sale(rs.getInt("ID_Sale"));
@@ -117,6 +118,21 @@ public int UpdateScheduler(scheduler schedu) throws SQLException, ClassNotFoundE
     }
 }
 
+public int DeleteScheduler(int id) throws SQLException, ClassNotFoundException{
+        Connection conn = getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `scheduler` WHERE ID_Scheduler=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return -1;
+        }
+        finally{
+            conn.close();
+        }
+}
 }
 
 

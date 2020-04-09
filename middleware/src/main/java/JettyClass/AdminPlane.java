@@ -15,7 +15,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.*;
 import java.io.Console;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminPlane  extends HttpServlet{
     @Override
@@ -54,5 +56,39 @@ public class AdminPlane  extends HttpServlet{
         }
 
     }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        plane pl = new plane();
+        pl.setId_sale(Integer.parseInt(req.getParameter("id_sale")));
+        pl.setPlanename(req.getParameter("planename"));
+        System.out.println("Add plane");
+        try {
+            resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
+
+            resp.setContentType("application/json;charset=UTF-8");
+            HttpSession session=req.getSession(false);
+            if(session != null ) {
+                TTransport transport; //1
+                transport = new TSocket("localhost",9090); //2
+                transport.open(); //3
+                TProtocol protocol = new TBinaryProtocol(transport); //4
+                connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
+                int result = client.InsertPlane(pl);
+                ServletOutputStream out = resp.getOutputStream();
+                Gson gson = new GsonBuilder().create();
+                Map<String, Integer> res= new HashMap<>();
+                res.put("result",result);
+                JsonObject arr = gson.toJsonTree(res).getAsJsonObject();
+                out.print(arr.toString());
+                transport.close();
+            }
+        } catch (TTransportException e) {
+            e.printStackTrace();
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

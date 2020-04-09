@@ -57,8 +57,10 @@ public class PlaneDAO {
         try {
 
             List<plane> planelist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from plane where ID_sale ="+id);
+            PreparedStatement ps = conn.prepareStatement("select * from plane where ID_sale =?");
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+
             while(rs.next()){
                 plane pl=new plane();
                 pl.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));
@@ -84,8 +86,9 @@ public int InsertPlane(plane pl) throws SQLException,ClassNotFoundException{
     Connection conn = getConnection();
     try{
         PreparedStatement ps = conn.prepareStatement
-                ("INSERT INTO `plane`(`Planename`)  VALUES (?)");
-        ps.setString(1,pl.getPlanename());
+                ("INSERT INTO `plane`(`ID_Sale`, `Planename`)  VALUES (?,?)");
+        ps.setInt(1,pl.getId_sale());
+        ps.setString(2,pl.getPlanename());
         ps.executeUpdate();
         return 1;
     }
@@ -116,6 +119,21 @@ public int UpdatePlane(int id_plane,int id_sale) throws SQLException, ClassNotFo
             conn.close();
         }
 }
+    public int DeletePlane(int id) throws SQLException, ClassNotFoundException{
+        Connection conn = getConnection();
+        try{
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM `plane` WHERE ID_Plane=?");
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return -1;
+        }
+        finally{
+            conn.close();
+        }
+    }
 
 }
 
