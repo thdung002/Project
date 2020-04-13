@@ -8,9 +8,9 @@ export async function GetAllAccounts(){
     });
 
 }
-export function
+export async function
 Delete(id){
-    return axios.post('/admin/user/delete',null,{
+    return await axios.post('/admin/users/delete',null,{
         params:{
             id: id
         }

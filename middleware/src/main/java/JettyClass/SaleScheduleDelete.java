@@ -21,10 +21,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DeleteScheduler extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+public class SaleScheduleDelete extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
-        System.out.println("Delete Scheduler");
+        System.out.println("Delete schedule");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
@@ -51,7 +51,7 @@ public class DeleteScheduler extends HttpServlet {
         } catch (TException e) {
             e.printStackTrace();
         }
-
     }
+
 
 }

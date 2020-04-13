@@ -14,9 +14,9 @@ GetSchedulerForSale(id){
     });
 
 }
-export function
+export async function
 Delete(id){
-    return axios.post('/sale/schedule/delete',null,{
+    return await axios.post('/sale/scheduler/delete',null,{
         params:{
             id: id
         }

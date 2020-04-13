@@ -26,6 +26,8 @@ public class AdminPlane  extends HttpServlet{
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+            resp.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
+
             HttpSession session=req.getSession(false);
             if(session != null ) {
                 TTransport transport; //1
@@ -41,14 +43,6 @@ public class AdminPlane  extends HttpServlet{
                 out.print(arr.toString());
                 transport.close();
             }
-//            else {
-//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
-//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
-//                resp.addCookie(user);
-//                resp.addCookie(type);
-//
-//            }
-//
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
@@ -63,7 +57,7 @@ public class AdminPlane  extends HttpServlet{
         System.out.println("Add plane");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-            resp.addHeader("Access-Control-Allow-Credentials","true");
+            resp.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
 
             resp.setContentType("application/json;charset=UTF-8");
             HttpSession session=req.getSession(false);
@@ -89,6 +83,5 @@ public class AdminPlane  extends HttpServlet{
         }
 
     }
-
 
 }

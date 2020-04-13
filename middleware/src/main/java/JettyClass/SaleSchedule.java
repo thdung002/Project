@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SaleGetSchedulerByID extends HttpServlet{
+public class SaleSchedule extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println(" GET Scheduler by ID");
         try {
@@ -92,7 +92,5 @@ public class SaleGetSchedulerByID extends HttpServlet{
         } catch (TException e) {
             e.printStackTrace();
         }
-
     }
-
 }

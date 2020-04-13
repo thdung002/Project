@@ -8,9 +8,9 @@ export async function GetAllPlane(){
     });
 
 }
-export function
+export async function
 Delete(id){
-    return axios.post('/admin/plane/delete',null,{
+    return await axios.post('/admin/plane/delete',null,{
         params:{
             id: id
         }

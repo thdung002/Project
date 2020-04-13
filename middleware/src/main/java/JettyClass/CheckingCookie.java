@@ -2,7 +2,6 @@ package JettyClass;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
@@ -15,20 +14,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import connectDB.*;
-
 public class CheckingCookie extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Checking cookie - authentication");
         try{
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+
             HttpSession session=req.getSession(false);
             String id = req.getParameter("id");
             if(session.getId().equals(id) && session != null )
             {
 
-                Object usr =  UserLogin.ck.get(id);
+                Object usr =  Login.ck.get(id);
                 resp.setContentType("application/json;charset=UTF-8");
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();

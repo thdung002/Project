@@ -20,8 +20,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-public class DeletePlane extends HttpServlet{
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+public class AdminPlaneDelete extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         System.out.println("Delete Plane");
         try {
@@ -50,7 +51,7 @@ public class DeletePlane extends HttpServlet{
         } catch (TException e) {
             e.printStackTrace();
         }
-
     }
+
 
 }

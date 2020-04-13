@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserLogin extends HttpServlet{
+public class Login extends HttpServlet{
     public static Map<String, Object> ck = new HashMap<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -55,6 +55,7 @@ public class UserLogin extends HttpServlet{
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+
             resp.setContentType("application/json;charset=UTF-8");
             //old session invalidate
             HttpSession session = req.getSession();

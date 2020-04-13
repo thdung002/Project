@@ -18,7 +18,7 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import connectDB.*;
-public class UserGetPlane extends HttpServlet {
+public class UserPlane extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         System.out.println("GET PLANE REQUEST");

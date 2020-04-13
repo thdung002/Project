@@ -20,10 +20,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-public class DeleteBooking extends HttpServlet{
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+
+public class AdminUserDelete extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
-        System.out.println("Delete Booking");
+        System.out.println("Delete User");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
@@ -36,7 +37,7 @@ public class DeleteBooking extends HttpServlet{
                 transport.open(); //3
                 TProtocol protocol = new TBinaryProtocol(transport); //4
                 connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
-                int result = client.DeleteBooking(id);
+                int result = client.DeleteUser(id);
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();
                 Map<String, Integer> res= new HashMap<>();

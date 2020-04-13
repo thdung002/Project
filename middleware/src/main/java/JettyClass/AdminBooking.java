@@ -15,7 +15,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.*;
 import java.io.Console;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdminBooking  extends HttpServlet{
     @Override
@@ -39,13 +41,36 @@ public class AdminBooking  extends HttpServlet{
                 out.print(arr.toString());
                 transport.close();
             }
-//            else {
-//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
-//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
-//                resp.addCookie(user);
-//                resp.addCookie(type);
-//
-//            }
+        } catch (TTransportException e) {
+            e.printStackTrace();
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        int id = Integer.parseInt(req.getParameter("id"));
+        System.out.println("Delete Booking");
+        try {
+            resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
+            HttpSession session=req.getSession(false);
+            if(session != null ) {
+                TTransport transport; //1
+                transport = new TSocket("localhost",9090); //2
+                transport.open(); //3
+                TProtocol protocol = new TBinaryProtocol(transport); //4
+                connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
+                resp.setContentType("application/json;charset=UTF-8");
+                int result = client.DeleteBooking(id);
+                ServletOutputStream out = resp.getOutputStream();
+                Gson gson = new GsonBuilder().create();
+                Map<String, Integer> res= new HashMap<>();
+                res.put("result",result);
+                JsonObject arr = gson.toJsonTree(res).getAsJsonObject();
+                out.print(arr.toString());
+                transport.close();
+            }
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
@@ -53,6 +78,8 @@ public class AdminBooking  extends HttpServlet{
         }
 
     }
+
+
 
 
 }

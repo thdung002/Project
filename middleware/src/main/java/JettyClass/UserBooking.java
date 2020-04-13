@@ -24,7 +24,7 @@ import connectDB.*;
 
 import javax.servlet.http.HttpServlet;
 
-public class UserAddBooking extends HttpServlet {
+public class UserBooking extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         booking book = new booking();
         book.setFull_name(req.getParameter("fn"));

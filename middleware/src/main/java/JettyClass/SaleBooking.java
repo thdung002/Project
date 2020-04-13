@@ -20,12 +20,13 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import connectDB.*;
-public class SaleGetBookingByID extends HttpServlet{
+public class SaleBooking extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         System.out.println("GET Booking by ID");
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+
             //session
             HttpSession session=req.getSession(false);
             if(session != null ){
@@ -43,14 +44,6 @@ public class SaleGetBookingByID extends HttpServlet{
                 out.print(arr.toString());
                 transport.close();
             }
-//            else {
-//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
-//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
-//                resp.addCookie(user);
-//                resp.addCookie(type);
-//
-//            }
-
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {

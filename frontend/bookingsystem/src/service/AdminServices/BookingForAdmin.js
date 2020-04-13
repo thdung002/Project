@@ -8,9 +8,9 @@ export async function GetAllBooking(){
     });
 
 }
-export function
+export async function
 Delete(id){
-    return axios.post('/admin/booking/delete',null,{
+    return await axios.post('/admin/booking',null,{
         params:{
             id: id
         }

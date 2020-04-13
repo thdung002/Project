@@ -26,6 +26,8 @@ public class AdminUsers extends HttpServlet {
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+            resp.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
+
 //            HttpSession session=req.getSession(false);
             TTransport transport; //1
             transport = new TSocket("localhost", 9090); //2
@@ -38,14 +40,6 @@ public class AdminUsers extends HttpServlet {
             Gson gson = new GsonBuilder().create();
             JsonArray arr = gson.toJsonTree(lstusr).getAsJsonArray();
             out.print(arr.toString());
-//            if(session == null)
-//            {
-//                Cookie user = new Cookie("CurrentAccountID",String.valueOf(0));
-//                Cookie type = new Cookie("CurrentAccountType",String.valueOf(0));
-//                resp.addCookie(user);
-//                resp.addCookie(type);
-//
-//            }
             transport.close();
         } catch (TTransportException e) {
             e.printStackTrace();
@@ -64,6 +58,7 @@ public class AdminUsers extends HttpServlet {
         try {
             resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
             resp.addHeader("Access-Control-Allow-Credentials","true");
+            resp.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
 
             resp.setContentType("application/json;charset=UTF-8");
             HttpSession session=req.getSession(false);
@@ -90,5 +85,36 @@ public class AdminUsers extends HttpServlet {
 
     }
 
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        System.out.println("Delete User");
+        try {
+            resp.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+            resp.addHeader("Access-Control-Allow-Credentials","true");
+
+            resp.setContentType("application/json;charset=UTF-8");
+            HttpSession session=req.getSession(false);
+            if(session != null ) {
+                TTransport transport; //1
+                transport = new TSocket("localhost",9090); //2
+                transport.open(); //3
+                TProtocol protocol = new TBinaryProtocol(transport); //4
+                connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
+                int result = client.DeleteUser(id);
+                ServletOutputStream out = resp.getOutputStream();
+                Gson gson = new GsonBuilder().create();
+                Map<String, Integer> res= new HashMap<>();
+                res.put("result",result);
+                JsonObject arr = gson.toJsonTree(res).getAsJsonObject();
+                out.print(arr.toString());
+                transport.close();
+            }
+        } catch (TTransportException e) {
+            e.printStackTrace();
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

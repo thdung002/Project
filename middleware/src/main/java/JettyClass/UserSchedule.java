@@ -17,7 +17,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
-public class UserGetAllScheduler extends HttpServlet {
+public class UserSchedule extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println(" GET Scheduler");
         try {

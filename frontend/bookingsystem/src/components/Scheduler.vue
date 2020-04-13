@@ -69,8 +69,17 @@
                             <div class="card">
                                 <div class="card-header">Work time</div>
                                 <div class="card-body card-block">
-                                    <hr>
                                     <form action="" method="post"  @submit.prevent="add">
+                                        <div v-if="errors.length" class="form-label">
+                                            <b>Please correct the following error(s):</b>
+                                            <b>
+                                                <ul style="padding-left: 1em;">
+                                                    <li  v-for="(error,index) in errors" :key="index">{{ error }}</li>
+                                                </ul>
+
+                                            </b>
+                                        </div>
+
                                         <div class="form-group">
                                             <label  class="form-control-label">Choose plane</label>
                                             <select class="form-control " v-model="dataform.plane">
@@ -200,6 +209,7 @@
                 displayPeriodCount: 1,
                 showModal: false,
                 time:"",
+                errors:[],
                 columnScheduler: [
                     {
                         name: 'Id_scheduler',
@@ -303,10 +313,12 @@
                 if(counter===0){this.message="Please choose at least 1 rows to delete";}
             },
             add() {
-                if (this.dataform.plane.text === undefined)
-                    return this.message = "Added failed";
-                else if(this.dataform.date < this.datestamp(this.showDate))
-                    return this.message="Can't add with older date with today";
+                this.message="";
+                this.errors=[];
+                if(!this.dataform.date) this.errors.push("Date required.");
+                if(!this.dataform.plane) this.errors.push("Plane required.");
+                if(this.dataform.date < this.datestamp(this.showDate))
+                    this.errors.push("Can't add with older date with today");
                 else {
                     new Scheduler.AddScheduler(this.checkinglist.Id_sale, this.dataform.date, this.value[0], this.value[1], this.dataform.plane.id).then(response => {
                         console.log(response);

@@ -4,7 +4,8 @@ axios.defaults.withCredentials=true;
 
 const instance = axios.create({
 // .. where we make our configurations
-    baseURL: 'http://localhost:8000'
+    baseURL: 'http://localhost:8000',
+    timeout: 1000,
 });
 
 // Add a request interceptor

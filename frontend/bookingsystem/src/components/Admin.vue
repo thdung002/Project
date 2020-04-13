@@ -646,6 +646,7 @@
             addSchedule() {
                 this.message="";
                 this.errors = [];
+                this.success="";
                 if(!this.dataform.idsale) this.errors.push("Please choose sale.");
                 if(!this.dataform.plane) this.errors.push("Please choose plane.");
                 if(this.dataform.date < this.datestamp2(this.showDate))
