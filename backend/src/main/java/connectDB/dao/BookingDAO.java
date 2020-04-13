@@ -28,8 +28,8 @@ public static BookingDAO getInstance() {
 
         try {
             List<booking> bookinglist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from booking");
+            PreparedStatement ps = conn.prepareStatement("select * from booking");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 booking bk=new booking();
                 bk.setId_booking(Integer.parseInt(rs.getString("ID_Booking")));

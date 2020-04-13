@@ -54,8 +54,8 @@ public class UserDAO {
         try {
 
             List<users> usrlist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from users ");
+            PreparedStatement ps = conn.prepareStatement("select * from users");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 users usr=new users();
                 usr.setId_sale(Integer.parseInt(rs.getString("ID_Sale")));
@@ -81,8 +81,8 @@ public class UserDAO {
         try {
 
             List<users> usrlist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from users ");
+            PreparedStatement ps = conn.prepareStatement("select * from users");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 users usr=new users();
                 usr.setId_sale(Integer.parseInt(rs.getString("ID_Sale")));

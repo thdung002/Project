@@ -3,49 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a56f9e40-ea1d-4e53-a134-ddcca56de0f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Scheduler.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/BookingForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/BookingForAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/PlaneForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/PlaneForAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/UsersForAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/AdminServices/UsersForAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/SchedulerForSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/SaleServices/SchedulerForSale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/service/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminBooking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminPlane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/AdminUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/CheckingCookie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/CheckingCookie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/DeleteBooking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/DeletePlane.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/DeleteScheduler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/DeleteUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleGetBookingByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleBooking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleGetPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SalePlane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleGetSchedulerByID.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/SaleSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserAddBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserBooking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserGetAllScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserGetPlane.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserPlane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/UserLogout.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminBooking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminPlane.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminPlane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/AdminUsers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/CheckingCookie.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/CheckingCookie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/DeleteBooking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/DeletePlane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/DeleteScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/DeleteUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/SaleGetBookingByID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/SaleGetPlane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/SaleGetSchedulerByID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserAddBooking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserGetAllScheduler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserGetPlane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/UserLogout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/BookingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/PlaneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/PlaneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/SchedulerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/SchedulerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/UserDAO.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -195,6 +156,7 @@
       <workItem from="1586593106239" duration="611000" />
       <workItem from="1586699736709" duration="473000" />
       <workItem from="1586751254978" duration="1802000" />
+      <workItem from="1586773413401" duration="339000" />
     </task>
     <servers />
   </component>

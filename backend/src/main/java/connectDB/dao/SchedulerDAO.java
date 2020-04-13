@@ -24,8 +24,8 @@ public List<scheduler> GetScheduler() throws SQLException, ClassNotFoundExceptio
     Connection conn = getConnection();
     try {
         List<scheduler> salelist = new ArrayList<>();
-        Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("select * from scheduler");
+        PreparedStatement ps = conn.prepareStatement("select * from scheduler");
+        ResultSet rs = ps.executeQuery();
         while(rs.next()){
             scheduler sl=new scheduler();
             sl.setId_scheduler(rs.getInt("ID_Scheduler"));

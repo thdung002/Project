@@ -26,8 +26,8 @@ public class PlaneDAO {
         try {
 
             List<plane> planelist = new ArrayList<>();
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from plane ");
+            PreparedStatement ps = conn.prepareStatement("select * from plane");
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 plane pl=new plane();
                 pl.setId_plane(Integer.parseInt(rs.getString("ID_Plane")));
