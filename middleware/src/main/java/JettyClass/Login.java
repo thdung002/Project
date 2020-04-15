@@ -71,11 +71,6 @@ public class Login extends HttpServlet{
             connectDBService.Client client = new connectDBService.Client(protocol); //5 Must have in client
             users lstuser = client.GetUsers(username,password);
             if(lstuser != null){
-                session.setAttribute("CurrentAccountID",lstuser.getId_sale());
-                session.setAttribute("CurrentAccountType",lstuser.getAccountType());
-                session.setMaxInactiveInterval(1800);
-
-
                 ck.put(session.getId(), lstuser);
                 System.out.println(ck);
 

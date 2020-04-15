@@ -29,15 +29,12 @@ public class Logout extends HttpServlet {
 
             HttpSession session = req.getSession(false);
             if(session!= null){
-                session.removeAttribute("CurrentAccountID");
+                session.removeAttribute("JSESSIONID");
                 session.invalidate();
                 System.out.println("You are logged out");
             }
-            Cookie user = new Cookie("CurrentAccountID", "0");
-            Cookie type = new Cookie("CurrentAccountType", "0");
+            Cookie user = new Cookie("JSESSIONID", null);
             user.setMaxAge(0);
-            type.setMaxAge(0);
-            resp.addCookie(type);
             resp.addCookie(user);
         } catch (Exception e) {
             e.printStackTrace();

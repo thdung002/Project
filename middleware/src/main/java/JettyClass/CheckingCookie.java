@@ -6,10 +6,7 @@ import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +20,7 @@ public class CheckingCookie extends HttpServlet {
 
             HttpSession session=req.getSession(false);
             String id = req.getParameter("id");
-            if(session.getId().equals(id) && session != null )
+            if(session.getId().equals(id) && session != null)
             {
 
                 Object usr =  Login.ck.get(id);
@@ -35,7 +32,12 @@ public class CheckingCookie extends HttpServlet {
             }
 
             else{
+                session.removeAttribute("JSESSIONID");
                 session.invalidate();
+                Cookie user = new Cookie("JSESSIONID", null);
+                user.setMaxAge(0);
+                resp.addCookie(user);
+
                 ServletOutputStream out = resp.getOutputStream();
                 Gson gson = new GsonBuilder().create();
                 Map<String, Integer> res= new HashMap<>();

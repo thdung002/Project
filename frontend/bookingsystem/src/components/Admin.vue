@@ -342,7 +342,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="card">
-                                <div class="card-header">Add plane</div>
+                                <div class="card-header">Add users</div>
                                 <div class="card-body card-block">
                                     <form action="" method="post"  @submit.prevent="addUser">
                                         <div class="form-group">

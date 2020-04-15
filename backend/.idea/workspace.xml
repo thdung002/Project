@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a56f9e40-ea1d-4e53-a134-ddcca56de0f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/BookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/PlaneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/PlaneDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/SchedulerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/SchedulerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectDB/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectDB/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/bookingsystem/src/components/Admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/CheckingCookie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/CheckingCookie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/src/main/java/JettyClass/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/CheckingCookie.class" beforeDir="false" afterPath="$PROJECT_DIR$/../middleware/target/classes/JettyClass/CheckingCookie.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -157,6 +160,7 @@
       <workItem from="1586699736709" duration="473000" />
       <workItem from="1586751254978" duration="1802000" />
       <workItem from="1586773413401" duration="339000" />
+      <workItem from="1586942006046" duration="988000" />
     </task>
     <servers />
   </component>
