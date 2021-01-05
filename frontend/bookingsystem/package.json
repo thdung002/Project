@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@lazy-copilot/datetimepicker": "^0.1.47",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcrypt": "^4.0.0",
     "bootstrap-vue": "^2.7.0",
     "core-js": "^3.6.4",
