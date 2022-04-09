@@ -21,7 +21,7 @@
     "lodash": "latest",
     "math": "0.0.3",
     "mdbvue": "^6.5.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mysql": "^2.18.1",
     "sequelize": "^5.21.5",
     "vue": "^2.6.11",
