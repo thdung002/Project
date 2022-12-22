@@ -17,7 +17,7 @@
     "finale": "^1.0.0",
     "finale-rest": "^1.1.1",
     "jqwidgets-scripts": "^9.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "latest",
     "math": "0.0.3",
     "mdbvue": "^6.5.1",
